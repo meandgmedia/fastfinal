@@ -2,7 +2,7 @@
 import { SITE } from "../../data/site";
 
 interface Props {
-  /** Page-specific title. The site name is appended automatically. */
+  /** Page-specific title. The site name is appended automatically unless appendBrand is false. */
   title: string;
   /** 150–160 character meta description. */
   description: string;
@@ -16,6 +16,13 @@ interface Props {
   schema?: Record<string, unknown> | Record<string, unknown>[];
   /** Open Graph image path relative to site root. Falls back to the default social share image. */
   ogImage?: string;
+  /**
+   * Append " | <Site Name>" to the <title> tag. Defaults to true. Set to
+   * false for already-descriptive titles (e.g. long blog post headlines)
+   * where adding the brand name would push the tag past ~60 characters —
+   * the brand still shows via og:site_name and the domain in search results.
+   */
+  appendBrand?: boolean;
 }
 
 const {
@@ -26,11 +33,13 @@ const {
   noindex = false,
   schema,
   ogImage = "/og/default.png",
+  appendBrand = true,
 } = Astro.props;
 
 const canonicalURL = new URL(path, SITE.url).toString();
 const ogImageURL = new URL(ogImage, SITE.url).toString();
-const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
+const fullTitle =
+  !appendBrand || title.includes(SITE.name) ? title : `${title} | ${SITE.shortName}`;
 const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 

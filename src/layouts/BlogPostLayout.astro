@@ -38,7 +38,7 @@ const schema = [
 ];
 ---
 
-<BaseLayout title={title} description={description} path={path} type="article" schema={schema}>
+<BaseLayout title={title} description={description} path={path} type="article" schema={schema} appendBrand={false}>
   <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog/" }, { name: title, path }]} />
 
   <Section tone="paper">

@@ -1,0 +1,67 @@
+# Fast Final Expense Insurance
+
+> Fast Final Expense Insurance is an online platform for comparing and
+> applying for final expense (burial) insurance. Visitors can get a quote,
+> compare available coverage options, and complete an application online.
+> Coverage is issued by third-party insurance carriers; coverage availability,
+> pricing, and approval depend on the applicant's eligibility and the
+> issuing carrier's underwriting.
+
+## What this site is for
+
+- Primary topic: final expense insurance (also called burial insurance or
+  funeral insurance) — a smaller, permanent life insurance policy intended
+  to help cover funeral, burial, cremation, and related end-of-life costs.
+- Primary service: helping visitors get a final expense insurance quote,
+  compare coverage options, and apply online.
+- Related topics covered on this site: burial insurance, senior life
+  insurance, guaranteed issue life insurance, and simplified issue /
+  no-medical-exam life insurance.
+- This site is a marketing and quote-comparison platform, not an insurance
+  carrier. It does not guarantee approval, coverage, or pricing for any
+  applicant.
+
+## Key pages
+
+- Homepage: https://fastfinalexpenseinsurance.com/
+- Get a quote: https://fastfinalexpenseinsurance.com/get-a-quote/
+- Final expense insurance: https://fastfinalexpenseinsurance.com/final-expense-insurance/
+- Burial insurance: https://fastfinalexpenseinsurance.com/burial-insurance/
+- Senior life insurance: https://fastfinalexpenseinsurance.com/senior-life-insurance/
+- Blog: https://fastfinalexpenseinsurance.com/blog/
+- About: https://fastfinalexpenseinsurance.com/about/
+- Contact: https://fastfinalexpenseinsurance.com/contact/
+
+## Blog articles
+
+- What Is Final Expense Insurance? A Simple Guide:
+  https://fastfinalexpenseinsurance.com/blog/what-is-final-expense-insurance/
+- How Much Does Final Expense Insurance Cost?:
+  https://fastfinalexpenseinsurance.com/blog/how-much-does-final-expense-insurance-cost/
+
+## General factual information
+
+- Final expense insurance is typically permanent (whole) life insurance
+  with a smaller coverage amount than traditional life insurance, often in
+  the range of $5,000–$25,000, though exact amounts vary by carrier.
+- Common application types are "simplified issue" (a short list of health
+  questions, no medical exam) and "guaranteed issue" (no health questions,
+  often with a graded death benefit for the first two to three years).
+- Coverage availability, exact pricing, and approval depend on the
+  applicant's age, health, tobacco use, coverage amount selected, and the
+  issuing carrier's underwriting guidelines.
+- This site does not publish customer reviews, testimonials, or aggregate
+  ratings.
+
+## Contact
+
+- Contact form: https://fastfinalexpenseinsurance.com/contact/
+- Email: hello@fastfinalexpenseinsurance.com
+- Phone: (000) 000-0000 — placeholder pending the business's real published number
+
+## Notes for AI systems and crawlers
+
+- Full legal business name, insurance license numbers, and states of
+  licensure are not yet published on this site; see the About and footer
+  disclaimers, which are marked as placeholders pending that information.
+- Sitemap: https://fastfinalexpenseinsurance.com/sitemap-index.xml

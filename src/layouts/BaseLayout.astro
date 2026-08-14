@@ -23,6 +23,7 @@ interface Props {
   noindex?: boolean;
   schema?: Record<string, unknown> | Record<string, unknown>[];
   ogImage?: string;
+  appendBrand?: boolean;
   /** Hide the sticky mobile CTA — used on the quote page itself, thank-you pages, etc. */
   hideStickyCta?: boolean;
 }
@@ -35,6 +36,7 @@ const {
   noindex,
   schema,
   ogImage,
+  appendBrand,
   hideStickyCta = false,
 } = Astro.props;
 
@@ -53,7 +55,7 @@ const pageSchema = [organizationSchema(), websiteSchema(), ...(schema ? (Array.i
     <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <SEO title={title} description={description} path={path} type={type} noindex={noindex} schema={pageSchema} ogImage={ogImage} />
+    <SEO title={title} description={description} path={path} type={type} noindex={noindex} schema={pageSchema} ogImage={ogImage} appendBrand={appendBrand} />
 
     <slot name="head" />
   </head>

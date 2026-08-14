@@ -1,0 +1,99 @@
+---
+// =============================================================================
+// CONTACT FORM — PRODUCTION FORM PROVIDER INTEGRATION POINT
+// -----------------------------------------------------------------------------
+// This form is not wired to a backend yet. No API keys, access tokens, or
+// endpoints are hard-coded here — none should be invented ahead of time.
+//
+// TO CONNECT A REAL PROVIDER (e.g. Web3Forms):
+//   1. Create a Web3Forms account and get an Access Key:
+//      https://web3forms.com
+//   2. Add the key as a Cloudflare Pages environment variable (e.g.
+//      PUBLIC_WEB3FORMS_ACCESS_KEY) rather than hard-coding it here.
+//   3. Set the <form> below to method="POST" action="https://api.web3forms.com/submit"
+//      and add a hidden input named "access_key" with that env var's value.
+//   4. Remove the `disabled` attribute on the submit button below.
+//   5. Wire the `quote_started` / `application_started` style analytics
+//      events if this form should report a "contact_form_submitted" event
+//      (see Phase 8 analytics architecture).
+//
+// Alternative providers (Formspree, a Cloudflare Pages Function, etc.) follow
+// the same pattern — swap the action URL and any required hidden fields.
+// =============================================================================
+
+import TextField from "./TextField.astro";
+import TextareaField from "./TextareaField.astro";
+import SelectField from "./SelectField.astro";
+
+const reasonOptions = [
+  { label: "General question", value: "general" },
+  { label: "Get a quote", value: "quote" },
+  { label: "Existing policy", value: "existing-policy" },
+  { label: "Other", value: "other" },
+];
+---
+
+<form class="contact-form" aria-describedby="contact-form-note">
+  <!-- Web3Forms (or equivalent) integration point starts here. -->
+  <div class="contact-form__grid">
+    <TextField label="Full name" name="name" required autocomplete="name" />
+    <TextField label="Email address" name="email" type="email" required autocomplete="email" />
+  </div>
+  <div class="contact-form__grid">
+    <TextField label="Phone number" name="phone" type="tel" autocomplete="tel" hint="Optional" />
+    <SelectField label="Reason for contacting" name="reason" options={reasonOptions} required />
+  </div>
+  <TextareaField label="Message" name="message" required placeholder="How can we help?" rows={6} />
+
+  <button type="submit" class="contact-form__submit" disabled aria-disabled="true">
+    Send Message
+  </button>
+  <!-- Integration point ends here. -->
+
+  <p class="contact-form__note text-subtle" id="contact-form-note">
+    This form isn't connected yet — sending will be enabled once it's linked
+    to a form provider. In the meantime, reach us directly using the contact
+    details on this page.
+  </p>
+</form>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .contact-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+  }
+
+  .contact-form__submit {
+    justify-self: start;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: var(--color-cta);
+    color: var(--color-cta-text);
+    font-weight: 700;
+    font-size: var(--text-base);
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .contact-form__note {
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 640px) {
+    .contact-form__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form__submit {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import Button from "../../components/ui/Button.astro";
+import Card from "../../components/ui/Card.astro";
+import ContactForm from "../../components/forms/ContactForm.astro";
+import { SITE, CTA as CTA_COPY } from "../../data/site";
+import { webPageSchema, breadcrumbSchema } from "../../lib/schema";
+
+const title = "Contact Us";
+const description =
+  "Get in touch with Fast Final Expense Insurance. Send a message or get your free final expense insurance quote online.";
+const path = "/contact/";
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Contact", path },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Contact", path }]} />
+
+  <Section tone="paper">
+    <div class="contact-page">
+      <div class="contact-page__intro">
+        <p class="eyebrow">Contact</p>
+        <h1>Get in touch</h1>
+        <p class="lede">
+          Have a question before you get started, or need help with an
+          existing policy? Send us a message and we'll get back to you.
+        </p>
+
+        <Card padding="lg" class="contact-page__quote-card">
+          <p class="eyebrow">Need a quote?</p>
+          <h2 class="contact-page__quote-heading">Skip the wait</h2>
+          <p class="text-muted">
+            If you're ready to see your final expense insurance options,
+            getting a quote online only takes a couple of minutes.
+          </p>
+          <Button href={CTA_COPY.quoteHref} variant="primary" size="lg" trackEvent="quote_cta_click" class="contact-page__quote-btn">
+            {CTA_COPY.primary}
+          </Button>
+        </Card>
+
+        <div class="contact-page__details">
+          <h2 class="contact-page__details-heading">Other ways to reach us</h2>
+          <ul>
+            <li>
+              <span class="text-subtle">Phone</span>
+              <a href={`tel:${SITE.phone.tel}`} data-track-event="phone_click">{SITE.phone.display}</a>
+            </li>
+            <li>
+              <span class="text-subtle">Email</span>
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <Card padding="lg" class="contact-page__form-card">
+        <h2>Send a message</h2>
+        <p class="text-muted contact-page__form-lede">
+          Fill out the form below and we'll follow up as soon as we can.
+        </p>
+        <ContactForm />
+      </Card>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: var(--space-9);
+    align-items: start;
+  }
+
+  .contact-page__intro h1 {
+    margin-top: var(--space-3);
+  }
+
+  .contact-page__intro .lede {
+    margin-top: var(--space-5);
+  }
+
+  .contact-page__quote-card {
+    margin-top: var(--space-8);
+    background: var(--color-surface-alt);
+  }
+
+  .contact-page__quote-heading {
+    margin-top: var(--space-2);
+    font-size: var(--text-md);
+  }
+
+  .contact-page__quote-btn {
+    margin-top: var(--space-5);
+  }
+
+  .contact-page__details {
+    margin-top: var(--space-8);
+    padding-top: var(--space-7);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact-page__details-heading {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-page__details ul {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .contact-page__details li {
+    display: flex;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  .contact-page__details span.text-subtle {
+    min-width: 4rem;
+  }
+
+  .contact-page__details a {
+    color: var(--color-ink-900);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .contact-page__details a:hover {
+    color: var(--color-accent-700);
+  }
+
+  .contact-page__form-lede {
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (max-width: 900px) {
+    .contact-page {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-page__form-card {
+      order: -1;
+    }
+  }
+</style>

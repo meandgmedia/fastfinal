@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/marketing/PageHero.astro";
+import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
+import Section from "../../components/ui/Section.astro";
+import CTA from "../../components/ui/CTA.astro";
+import { SITE, CTA as CTA_COPY } from "../../data/site";
+import { webPageSchema, breadcrumbSchema } from "../../lib/schema";
+
+const title = "About Us";
+const description =
+  "Learn about Fast Final Expense Insurance and how we help people compare and apply for final expense insurance online.";
+const path = "/about/";
+
+const pillars = [
+  {
+    title: "Simplicity",
+    description: "Final expense insurance shouldn't require a stack of paperwork to understand. We keep things clear, from the language on this site to the application itself.",
+  },
+  {
+    title: "Speed",
+    description: "You can get a quote, compare your options, and apply online — often without waiting on a callback to get started.",
+  },
+  {
+    title: "Transparency",
+    description: "We aim to explain how final expense insurance actually works, including the parts that don't always make for the best marketing copy — like waiting periods and rate classes.",
+  },
+  {
+    title: "Online convenience",
+    description: "Everything from your first quote to a completed application is designed to work from your phone or computer, on your own timeline.",
+  },
+];
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "About", path },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <PageHero
+    eyebrow="About"
+    heading={`About ${SITE.name}`}
+    lede="We help people compare and apply for final expense insurance online — built around a simple idea: getting covered shouldn't be complicated."
+    breadcrumbs={[{ name: "Home", path: "/" }, { name: "About", path }]}
+    secondaryLabel={CTA_COPY.secondary}
+    secondaryHref={CTA_COPY.quoteHref}
+  />
+
+  <Section tone="surface">
+    <div class="prose-block">
+      <h2>What we do</h2>
+      <p>
+        {SITE.name} is an online platform for comparing and applying for
+        final expense insurance. Rather than asking you to sit through an
+        in-person meeting or wait on hold, we're built around letting you
+        get a quote, compare your available options, and complete an
+        application — all online, at your own pace.
+      </p>
+      <p>
+        We connect visitors with final expense insurance products issued by
+        third-party carriers. We aren't an insurance carrier ourselves, and
+        we don't guarantee approval or coverage for any applicant — final
+        underwriting decisions are made by the issuing carrier based on your
+        application.
+      </p>
+    </div>
+  </Section>
+
+  <FeatureGrid
+    tone="alt"
+    eyebrow="What We're Built Around"
+    heading="How we think about this"
+    columns={4}
+    items={pillars}
+  />
+
+  <Section tone="surface">
+    <div class="prose-block company-details">
+      <h2>Company details</h2>
+      <p class="text-muted">
+        We believe in being upfront about who we are. The details below are
+        placeholders and will be updated with our full legal and licensing
+        information.
+      </p>
+      <dl class="company-details__list">
+        <div>
+          <dt>Legal business name</dt>
+          <dd>[Legal business name — placeholder]</dd>
+        </div>
+        <div>
+          <dt>Insurance license number(s)</dt>
+          <dd>[License number(s) — placeholder]</dd>
+        </div>
+        <div>
+          <dt>States of licensure</dt>
+          <dd>[States of licensure — placeholder]</dd>
+        </div>
+        <div>
+          <dt>Contact</dt>
+          <dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
+        </div>
+      </dl>
+    </div>
+  </Section>
+
+  <CTA
+    heading="Ready to see your final expense insurance options?"
+    subheading="Get your free quote and compare coverage in minutes — no obligation to apply."
+    primaryLabel={CTA_COPY.primary}
+    secondaryLabel="Contact us"
+    secondaryHref="/contact/"
+  />
+</BaseLayout>
+
+<style>
+  .prose-block {
+    max-width: 68ch;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .prose-block h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .prose-block p {
+    max-width: none;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .company-details__list {
+    margin-top: var(--space-4);
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-md);
+  }
+
+  .company-details__list > div {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .company-details__list dt {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-subtle);
+  }
+
+  .company-details__list dd {
+    margin: 0;
+    color: var(--color-ink-800);
+  }
+
+  .company-details__list dd a {
+    color: var(--color-accent-700);
+  }
+
+  @media (max-width: 560px) {
+    .company-details__list > div {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+</style>

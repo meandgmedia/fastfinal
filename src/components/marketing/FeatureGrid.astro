@@ -1,0 +1,97 @@
+---
+import Section from "../ui/Section.astro";
+import Card from "../ui/Card.astro";
+
+interface Item {
+  title: string;
+  description: string;
+  href?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subheading?: string;
+  items: Item[];
+  columns?: 2 | 3 | 4;
+  tone?: "paper" | "surface" | "alt" | "ink";
+  centered?: boolean;
+}
+
+const {
+  eyebrow,
+  heading,
+  subheading,
+  items,
+  columns = 3,
+  tone = "surface",
+  centered = false,
+} = Astro.props;
+---
+
+<Section tone={tone} eyebrow={eyebrow} heading={heading} subheading={subheading} centered={centered}>
+  <ul class="feature-grid" style={`--cols: ${columns}`}>
+    {
+      items.map((item) =>
+        item.href ? (
+          <Card as="li" href={item.href} padding="md" class="feature-grid__card">
+            <h3 class="feature-grid__title">{item.title}</h3>
+            <p class:list={[tone === "ink" ? "" : "text-muted"]}>{item.description}</p>
+            <span class="feature-grid__arrow" aria-hidden="true">→</span>
+          </Card>
+        ) : (
+          <li class="feature-grid__item">
+            <h3 class="feature-grid__title">{item.title}</h3>
+            <p class:list={[tone === "ink" ? "" : "text-muted"]}>{item.description}</p>
+          </li>
+        )
+      )
+    }
+  </ul>
+</Section>
+
+<style>
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: var(--space-5);
+  }
+
+  .feature-grid__item {
+    border-top: 2px solid var(--color-line-strong);
+    padding-top: var(--space-5);
+  }
+
+  .feature-grid__title {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-grid__card {
+    position: relative;
+  }
+
+  .feature-grid__arrow {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    color: var(--color-accent-600);
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .feature-grid__card:hover .feature-grid__arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 900px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

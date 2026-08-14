@@ -1,0 +1,78 @@
+---
+import Container from "../ui/Container.astro";
+import Button from "../ui/Button.astro";
+import Breadcrumbs from "../ui/Breadcrumbs.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+
+interface Crumb {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  lede: string;
+  breadcrumbs: Crumb[];
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  eyebrow,
+  heading,
+  lede,
+  breadcrumbs,
+  primaryLabel = CTA_COPY.primary,
+  primaryHref = CTA_COPY.quoteHref,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+---
+
+<Breadcrumbs items={breadcrumbs} />
+
+<section class="page-hero">
+  <Container width="narrow">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{heading}</h1>
+    <p class="lede">{lede}</p>
+    <div class="page-hero__actions">
+      <Button href={primaryHref} variant="primary" size="lg" trackEvent="quote_cta_click">
+        {primaryLabel}
+      </Button>
+      {
+        secondaryLabel && secondaryHref && (
+          <Button href={secondaryHref} variant="secondary" size="lg">
+            {secondaryLabel}
+          </Button>
+        )
+      }
+    </div>
+  </Container>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: var(--space-9) var(--space-8);
+    background: var(--color-bg);
+  }
+
+  .page-hero h1 {
+    margin-top: var(--space-3);
+  }
+
+  .page-hero .lede {
+    margin-top: var(--space-5);
+    max-width: none;
+  }
+
+  .page-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+  }
+</style>

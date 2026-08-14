@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/marketing/PageHero.astro";
+import Section from "../../components/ui/Section.astro";
+import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
+import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
+import FAQAccordion from "../../components/faq/FAQAccordion.astro";
+import CTA from "../../components/ui/CTA.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
+import { SENIOR_LIFE_PAGE_FAQS } from "../../data/faq";
+
+const title = "Senior Life Insurance";
+const description =
+  "Compare life insurance options for seniors, including term, whole, final expense, and guaranteed issue policies. Get your free quote online.";
+const path = "/senior-life-insurance/";
+
+const policyTypes = [
+  {
+    title: "Final Expense / Burial Insurance",
+    description: "A smaller, permanent policy built specifically for funeral and end-of-life costs, often with a simplified application.",
+    href: "/final-expense-insurance/",
+  },
+  {
+    title: "Guaranteed Issue Life Insurance",
+    description: "No health questions or medical exam required, making it an option for applicants who may not qualify elsewhere.",
+    href: "/final-expense-insurance/",
+  },
+  {
+    title: "Whole Life Insurance",
+    description: "Permanent coverage designed to last a lifetime, often with larger coverage amounts and underwriting requirements.",
+    href: "/get-a-quote/",
+  },
+  {
+    title: "Term Life Insurance",
+    description: "Coverage for a set period, such as 10 or 20 years — often less expensive up front but doesn't last for life.",
+    href: "/get-a-quote/",
+  },
+];
+
+const howToChoose = [
+  { title: "Start with your goal", description: "Are you covering funeral costs specifically, or looking for broader protection for your family?" },
+  { title: "Consider your health", description: "Your health history affects which products you'll qualify for and at what price." },
+  { title: "Compare coverage amounts", description: "Larger amounts cost more — match the amount to what you're actually trying to cover." },
+  { title: "Factor in your budget", description: "Choose a premium that fits comfortably into your monthly budget for the long term." },
+];
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Senior Life Insurance", path },
+  ]),
+  faqSchema(SENIOR_LIFE_PAGE_FAQS),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <PageHero
+    eyebrow="Senior Life Insurance"
+    heading="Life Insurance for Seniors"
+    lede="Life insurance options don't stop at a certain age. Whether you're looking for coverage to protect your family or a simple policy to cover final expenses, there are options built for seniors."
+    breadcrumbs={[{ name: "Home", path: "/" }, { name: "Senior Life Insurance", path }]}
+    secondaryLabel={CTA_COPY.secondary}
+    secondaryHref={CTA_COPY.quoteHref}
+  />
+
+  <Section tone="surface">
+    <div class="prose-block">
+      <h2>What is senior life insurance?</h2>
+      <p>
+        "Senior life insurance" isn't a single product — it's a category
+        that covers several types of life insurance available to older
+        applicants, from small final expense policies to larger permanent
+        or term policies. The right choice depends on your goals, your
+        health, and your budget.
+      </p>
+    </div>
+  </Section>
+
+  <FeatureGrid
+    tone="alt"
+    eyebrow="Options"
+    heading="Types of life insurance for seniors"
+    subheading="A quick overview of the main categories — explore any of them to learn more."
+    columns={2}
+    items={policyTypes}
+  />
+
+  <FeatureGrid
+    tone="surface"
+    eyebrow="How to Choose"
+    heading="How to choose the right policy"
+    columns={4}
+    items={howToChoose}
+  />
+
+  <RelatedCoverage />
+
+  <Section tone="surface" eyebrow="FAQ" heading="Senior life insurance FAQs" width="narrow" centered>
+    <FAQAccordion items={SENIOR_LIFE_PAGE_FAQS} />
+  </Section>
+
+  <CTA
+    heading="Compare life insurance options built for seniors"
+    subheading="Get your free quote and see what you may be eligible for."
+    primaryLabel={CTA_COPY.primary}
+  />
+</BaseLayout>
+
+<style>
+  .prose-block {
+    max-width: 68ch;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .prose-block h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .prose-block p {
+    max-width: none;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+  }
+</style>

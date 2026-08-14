@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/marketing/PageHero.astro";
+import Section from "../../components/ui/Section.astro";
+import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
+import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
+import FAQAccordion from "../../components/faq/FAQAccordion.astro";
+import CTA from "../../components/ui/CTA.astro";
+import RouteLine from "../../components/ui/RouteLine.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
+import { BURIAL_INSURANCE_PAGE_FAQS } from "../../data/faq";
+
+const title = "Burial Insurance";
+const description =
+  "Burial insurance helps your family cover funeral and burial costs. See what it covers, how it works, and get your free quote online.";
+const path = "/burial-insurance/";
+
+const whatItCovers = [
+  { title: "Funeral home services", description: "Viewing, ceremony, and staff fees." },
+  { title: "Casket or urn", description: "Whichever your family chooses." },
+  { title: "Cemetery plot & headstone", description: "Burial plot, vault, and marker costs." },
+  { title: "Transportation", description: "Transport of remains and related logistics." },
+  { title: "Obituary & other services", description: "Printing, flowers, and other arrangements." },
+  { title: "Anything else your family needs", description: "The death benefit isn't restricted to funeral costs only." },
+];
+
+const vsTraditional = [
+  {
+    title: "Smaller coverage amounts",
+    description: "Burial insurance is sized for end-of-life costs, typically a few thousand to $25,000, rather than large income-replacement amounts.",
+  },
+  {
+    title: "Easier to qualify for",
+    description: "Many burial insurance products are simplified issue or guaranteed issue, so a medical exam usually isn't required.",
+  },
+  {
+    title: "Permanent coverage",
+    description: "Like traditional whole life insurance, burial insurance is designed to last for life as long as premiums are paid.",
+  },
+];
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Burial Insurance", path },
+  ]),
+  faqSchema(BURIAL_INSURANCE_PAGE_FAQS),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <PageHero
+    eyebrow="Burial Insurance"
+    heading="Burial Insurance"
+    lede="Burial insurance — also called final expense insurance — is a small, permanent life insurance policy designed to help your family cover funeral and burial costs without financial strain."
+    breadcrumbs={[{ name: "Home", path: "/" }, { name: "Burial Insurance", path }]}
+    secondaryLabel={CTA_COPY.secondary}
+    secondaryHref={CTA_COPY.quoteHref}
+  />
+
+  <Section tone="surface">
+    <div class="prose-block">
+      <h2>What is burial insurance?</h2>
+      <p>
+        Burial insurance pays a death benefit to your named beneficiary,
+        which they can use to cover funeral, burial, or cremation costs —
+        or any other final expenses. Unlike a prepaid funeral plan purchased
+        directly through a funeral home, the money isn't restricted to
+        specific services, giving your family flexibility when they need it
+        most.
+      </p>
+    </div>
+  </Section>
+
+  <FeatureGrid
+    tone="alt"
+    eyebrow="Coverage"
+    heading="What burial insurance can help cover"
+    columns={3}
+    items={whatItCovers}
+  />
+
+  <FeatureGrid
+    tone="surface"
+    eyebrow="Burial vs. Traditional Life Insurance"
+    heading="How burial insurance is different"
+    subheading="Burial insurance trades a larger coverage amount for a simpler, faster path to approval."
+    columns={3}
+    items={vsTraditional}
+  />
+
+  <Section tone="paper" eyebrow="Get Started" heading="How to get burial insurance" centered>
+    <RouteLine />
+    <div class="burial-cta">
+      <p class="text-muted">
+        Getting started takes just a few minutes — there's no obligation to
+        apply.
+      </p>
+    </div>
+  </Section>
+
+  <RelatedCoverage />
+
+  <Section tone="surface" eyebrow="FAQ" heading="Burial insurance FAQs" width="narrow" centered>
+    <FAQAccordion items={BURIAL_INSURANCE_PAGE_FAQS} />
+  </Section>
+
+  <CTA
+    heading="See your burial insurance options"
+    subheading="Compare coverage amounts and apply online in minutes."
+    primaryLabel={CTA_COPY.primary}
+  />
+</BaseLayout>
+
+<style>
+  .prose-block {
+    max-width: 68ch;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .prose-block h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .prose-block p {
+    max-width: none;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .burial-cta {
+    margin-top: var(--space-8);
+    text-align: center;
+  }
+</style>

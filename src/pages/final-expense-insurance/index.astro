@@ -1,0 +1,192 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/marketing/PageHero.astro";
+import Section from "../../components/ui/Section.astro";
+import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
+import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
+import FAQAccordion from "../../components/faq/FAQAccordion.astro";
+import CTA from "../../components/ui/CTA.astro";
+import Card from "../../components/ui/Card.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
+import { FINAL_EXPENSE_PAGE_FAQS } from "../../data/faq";
+
+const title = "Final Expense Insurance";
+const description =
+  "Learn how final expense insurance works, what it covers, and what affects your cost. Compare coverage amounts and get your free quote online.";
+const path = "/final-expense-insurance/";
+
+const howItWorks = [
+  {
+    title: "Simplified issue",
+    description:
+      "You answer a short list of health questions. No medical exam is required, and eligibility and pricing depend on your answers.",
+  },
+  {
+    title: "Guaranteed issue",
+    description:
+      "No health questions at all. Coverage is easier to qualify for, though it often costs more per dollar of coverage and may include a graded death benefit for the first few years.",
+  },
+];
+
+const coverageUses = [
+  { title: "Funeral & burial costs", description: "Services, casket or urn, cemetery plot, and related fees." },
+  { title: "Cremation", description: "Cremation services and related arrangements." },
+  { title: "Outstanding bills", description: "Credit cards, medical bills, or other debts left behind." },
+  { title: "Medical expenses", description: "Final medical costs not covered elsewhere." },
+  { title: "Other final expenses", description: "Any remaining costs your beneficiary decides to use the funds for." },
+];
+
+const costFactors = [
+  { title: "Age", description: "Premiums are generally lower the younger you are when you apply." },
+  { title: "Gender", description: "Pricing can differ between male and female applicants." },
+  { title: "Health & tobacco use", description: "Health questions and tobacco use can affect eligibility and rate class." },
+  { title: "Coverage amount", description: "Higher coverage amounts mean higher premiums." },
+  { title: "Policy type", description: "Simplified issue and guaranteed issue policies are priced differently." },
+];
+
+const whoNeedsIt = [
+  { title: "Seniors", description: "Looking for coverage that fits a fixed income and later-in-life needs.", href: "/senior-life-insurance/" },
+  { title: "Adults planning ahead", description: "Who want arrangements in place before they're needed.", href: "/get-a-quote/" },
+  { title: "People without employer coverage", description: "Who don't have life insurance through work and want their own policy.", href: "/get-a-quote/" },
+  { title: "Anyone who wants to ease the burden on family", description: "By making sure funeral costs aren't a financial surprise.", href: "/burial-insurance/" },
+];
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Final Expense Insurance", path },
+  ]),
+  faqSchema(FINAL_EXPENSE_PAGE_FAQS),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <PageHero
+    eyebrow="Final Expense Insurance"
+    heading="Final Expense Insurance"
+    lede="A smaller, permanent life insurance policy built to help your family cover funeral, burial, and other end-of-life costs — with an application process designed to be simple."
+    breadcrumbs={[{ name: "Home", path: "/" }, { name: "Final Expense Insurance", path }]}
+    secondaryLabel={CTA_COPY.secondary}
+    secondaryHref={CTA_COPY.quoteHref}
+  />
+
+  <Section tone="surface">
+    <div class="prose-block">
+      <h2>What is final expense insurance?</h2>
+      <p>
+        Final expense insurance is a type of whole life insurance sized
+        specifically for end-of-life costs rather than income replacement or
+        large estate planning needs. Coverage amounts are typically in the
+        thousands of dollars — enough to help with funeral, burial, or
+        cremation costs — which keeps premiums more manageable than a large
+        traditional life insurance policy.
+      </p>
+      <p>
+        Because it's permanent coverage, a final expense policy doesn't
+        expire the way term life insurance does. As long as premiums are
+        paid, the policy is designed to stay in force, and premiums are
+        generally structured to stay level over time.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    tone="alt"
+    eyebrow="How It Works"
+    heading="Two common ways to apply"
+    subheading="Most final expense insurance products fall into one of two categories, and it's worth understanding the difference before you compare quotes."
+  >
+    <div class="how-it-works">
+      {
+        howItWorks.map((item) => (
+          <Card padding="lg">
+            <h3>{item.title}</h3>
+            <p class="text-muted">{item.description}</p>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <FeatureGrid
+    tone="surface"
+    eyebrow="What It Covers"
+    heading="What final expense insurance is commonly used for"
+    columns={3}
+    items={coverageUses}
+  />
+
+  <FeatureGrid
+    tone="alt"
+    eyebrow="Cost"
+    heading="What affects your cost"
+    subheading="Every applicant's quote is different. These are the main factors carriers consider."
+    columns={3}
+    items={costFactors}
+  />
+
+  <Section tone="surface" centered>
+    <p class="text-muted" style="text-align:center; max-width: 40rem; margin-inline: auto;">
+      Want the full breakdown, including example pricing? Read
+      <a href="/blog/how-much-does-final-expense-insurance-cost/">How Much Does Final Expense Insurance Cost?</a>
+      on our blog.
+    </p>
+  </Section>
+
+  <FeatureGrid
+    tone="ink"
+    eyebrow="Who It's For"
+    heading="Who needs final expense insurance?"
+    columns={4}
+    items={whoNeedsIt}
+  />
+
+  <RelatedCoverage />
+
+  <Section tone="surface" eyebrow="FAQ" heading="Final expense insurance FAQs" width="narrow" centered>
+    <FAQAccordion items={FINAL_EXPENSE_PAGE_FAQS} />
+  </Section>
+
+  <CTA
+    heading="See your final expense insurance options"
+    subheading="Get your free quote and compare coverage amounts in minutes."
+    primaryLabel={CTA_COPY.primary}
+  />
+</BaseLayout>
+
+<style>
+  .prose-block {
+    max-width: 68ch;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .prose-block h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .prose-block p {
+    max-width: none;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .how-it-works {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .how-it-works h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  @media (max-width: 700px) {
+    .how-it-works {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

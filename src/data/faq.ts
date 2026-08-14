@@ -55,3 +55,87 @@ export const HOMEPAGE_FAQS: FaqItem[] = [
       "After you submit your application, the issuing carrier reviews it according to their underwriting guidelines. Depending on the product and your answers, you may receive a decision quickly or the carrier may follow up for additional information.",
   },
 ];
+
+export const FINAL_EXPENSE_PAGE_FAQS: FaqItem[] = [
+  {
+    question: "What's the difference between simplified issue and guaranteed issue final expense insurance?",
+    answer:
+      "Simplified issue policies ask a short list of health questions and don't require a medical exam — pricing and eligibility depend on your answers. Guaranteed issue policies don't ask health questions at all, but they often cost more per dollar of coverage and may include a graded death benefit for the first two to three years.",
+  },
+  {
+    question: "What is a graded death benefit?",
+    answer:
+      "A graded death benefit is a feature on some guaranteed issue policies where the full coverage amount isn't payable if death occurs from natural causes within the first two to three years of the policy. Instead, beneficiaries typically receive a return of premiums paid, often with interest. Accidental death is usually covered at the full amount from day one.",
+  },
+  {
+    question: "Is final expense insurance permanent coverage?",
+    answer:
+      "Yes. Final expense insurance is typically a form of permanent (whole) life insurance, meaning coverage doesn't expire as long as premiums are paid, and premiums are generally designed to stay level over time.",
+  },
+  {
+    question: "Can I have more than one final expense policy?",
+    answer:
+      "In many cases, yes — some people choose to layer smaller policies from different carriers rather than one larger policy. Whether this makes sense depends on your goals and eligibility, and it's worth comparing options before deciding.",
+  },
+  {
+    question: "What happens if I stop paying premiums?",
+    answer:
+      "Requirements vary by carrier and policy. Missing payments can result in a grace period, and continued non-payment can lead to the policy lapsing. Review your specific policy documents once issued for exact terms.",
+  },
+];
+
+export const BURIAL_INSURANCE_PAGE_FAQS: FaqItem[] = [
+  {
+    question: "Is burial insurance the same thing as final expense insurance?",
+    answer:
+      "Generally, yes — \"burial insurance\" and \"final expense insurance\" are commonly used to describe the same type of small, permanent life insurance policy intended to help cover funeral and burial-related costs.",
+  },
+  {
+    question: "Does burial insurance cover cremation as well as burial?",
+    answer:
+      "Typically, yes. Burial insurance proceeds are usually paid to your beneficiary as a lump sum, which they can use for cremation, burial, or any other final expenses — the policy doesn't restrict how the money is spent.",
+  },
+  {
+    question: "Can beneficiaries use burial insurance money for something other than the funeral?",
+    answer:
+      "In most cases, yes. Because burial insurance pays a death benefit directly to your named beneficiary rather than to a funeral home, they can generally use the funds however they see fit, including on outstanding bills or medical expenses.",
+  },
+  {
+    question: "How is burial insurance different from a prepaid funeral plan?",
+    answer:
+      "A prepaid funeral plan is typically purchased directly through a funeral home for specific services, while burial insurance is a life insurance policy that pays cash to your beneficiary, who then decides how to use it. Burial insurance generally offers more flexibility.",
+  },
+  {
+    question: "What coverage amounts are typical for burial insurance?",
+    answer:
+      "Many applicants choose coverage amounts intended to cover average funeral and burial costs, though the right amount depends on your circumstances. Comparing a few coverage amounts can help you find one that fits your budget.",
+  },
+];
+
+export const SENIOR_LIFE_PAGE_FAQS: FaqItem[] = [
+  {
+    question: "Is there an age limit for life insurance for seniors?",
+    answer:
+      "Age limits vary by product and carrier. Some final expense and guaranteed issue products are available to applicants well into their 80s, while traditional term life insurance often has lower maximum issue ages. Comparing products is the best way to see what's available at your age.",
+  },
+  {
+    question: "Can seniors get life insurance with pre-existing health conditions?",
+    answer:
+      "Often, yes. Guaranteed issue and some simplified issue products are specifically designed for applicants who may not qualify for traditional, fully underwritten life insurance due to health history.",
+  },
+  {
+    question: "What's the difference between term life and permanent life insurance for seniors?",
+    answer:
+      "Term life insurance covers a set period (such as 10 or 20 years) and generally costs less initially, but coverage ends when the term expires. Permanent life insurance, including final expense policies, is designed to last for life as long as premiums are paid.",
+  },
+  {
+    question: "How much life insurance do seniors typically need?",
+    answer:
+      "It depends on the goal. Some seniors want enough to cover funeral and burial costs specifically, while others want additional coverage to leave behind for family, outstanding debts, or medical bills. There's no single right answer — it comes down to your personal goals and budget.",
+  },
+  {
+    question: "Do seniors need a medical exam to qualify?",
+    answer:
+      "Not always. Many products aimed at seniors — including simplified issue and guaranteed issue final expense policies — don't require a medical exam, though some ask health questions or have waiting periods.",
+  },
+];

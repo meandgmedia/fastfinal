@@ -1,0 +1,91 @@
+---
+interface Option {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  label: string;
+  name: string;
+  options: Option[];
+  required?: boolean;
+  placeholder?: string;
+  hint?: string;
+  class?: string;
+}
+
+const {
+  label,
+  name,
+  options,
+  required = false,
+  placeholder = "Select...",
+  hint,
+  class: className = "",
+} = Astro.props;
+
+const id = `field-${name}`;
+const hintId = hint ? `${id}-hint` : undefined;
+---
+
+<div class:list={["field", className]}>
+  <label class="field__label" for={id}>
+    {label}
+    {required && <span class="field__required" aria-hidden="true">*</span>}
+  </label>
+  <select class="field__input field__select" id={id} name={name} required={required} aria-describedby={hintId}>
+    <option value="" disabled selected>{placeholder}</option>
+    {options.map((opt) => <option value={opt.value}>{opt.label}</option>)}
+  </select>
+  {hint && <p class="field__hint" id={hintId}>{hint}</p>}
+</div>
+
+<style>
+  .field {
+    display: grid;
+    gap: var(--space-2);
+    text-align: left;
+  }
+
+  .field__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ink-800);
+  }
+
+  .field__required {
+    color: var(--color-accent-700);
+    margin-left: 0.15rem;
+  }
+
+  .field__input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-border);
+    background: var(--color-surface);
+    font-size: var(--text-base);
+  }
+
+  .field__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2316302b'><path d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%2316302b' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 1.1rem;
+    padding-right: 2.5rem;
+  }
+
+  .field__input:hover {
+    border-color: var(--color-ink-400);
+  }
+
+  .field__input:focus-visible {
+    border-color: var(--color-ink-800);
+  }
+
+  .field__hint {
+    font-size: var(--text-xs);
+    color: var(--color-text-subtle);
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import HowItWorks from "../components/home/HowItWorks.astro";
+import WhatIsFinalExpense from "../components/home/WhatIsFinalExpense.astro";
+import WhyChoose from "../components/home/WhyChoose.astro";
+import CoverageAmounts from "../components/home/CoverageAmounts.astro";
+import WhoItsFor from "../components/home/WhoItsFor.astro";
+import RelatedCoverage from "../components/home/RelatedCoverage.astro";
+import FAQ from "../components/home/FAQ.astro";
+import CTA from "../components/ui/CTA.astro";
+import { SITE, CTA as CTA_COPY } from "../data/site";
+import { webPageSchema, faqSchema } from "../lib/schema";
+import { HOMEPAGE_FAQS } from "../data/faq";
+
+const schema = [
+  webPageSchema({
+    title: SITE.name,
+    description: SITE.description,
+    path: "/",
+  }),
+  faqSchema(HOMEPAGE_FAQS),
+];
+---
+
+<BaseLayout title={SITE.name} description={SITE.description} schema={schema}>
+  <Hero />
+  <HowItWorks />
+  <WhatIsFinalExpense />
+  <WhyChoose />
+  <CoverageAmounts />
+  <WhoItsFor />
+  <RelatedCoverage />
+  <FAQ />
+  <CTA
+    eyebrow="Get Started"
+    heading="Ready to see your final expense insurance options?"
+    subheading="Get your free quote and compare what's available to you — no obligation."
+    primaryLabel={CTA_COPY.primary}
+    secondaryLabel={CTA_COPY.secondary}
+    secondaryHref="/final-expense-insurance/"
+  />
+</BaseLayout>

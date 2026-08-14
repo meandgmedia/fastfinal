@@ -1,0 +1,82 @@
+---
+import Section from "./Section.astro";
+import Button from "./Button.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+
+interface Props {
+  heading: string;
+  subheading?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  tone?: "ink" | "alt";
+  eyebrow?: string;
+}
+
+const {
+  heading,
+  subheading,
+  primaryLabel = CTA_COPY.primary,
+  primaryHref = CTA_COPY.quoteHref,
+  secondaryLabel,
+  secondaryHref,
+  tone = "ink",
+  eyebrow,
+} = Astro.props;
+---
+
+<Section tone={tone} centered class="cta-band">
+  {eyebrow && <p class="eyebrow cta-band__eyebrow">{eyebrow}</p>}
+  <h2 class="cta-band__heading">{heading}</h2>
+  {subheading && <p class="lede cta-band__sub">{subheading}</p>}
+  <div class="cta-band__actions">
+    <Button href={primaryHref} variant={tone === "ink" ? "dark" : "primary"} size="lg" trackEvent="quote_cta_click">
+      {primaryLabel}
+    </Button>
+    {
+      secondaryLabel && secondaryHref && (
+        <Button href={secondaryHref} variant={tone === "ink" ? "secondary" : "secondary"} size="lg">
+          {secondaryLabel}
+        </Button>
+      )
+    }
+  </div>
+  <p class="cta-band__fineprint text-subtle">
+    No obligation. Coverage available for eligible applicants.
+  </p>
+</Section>
+
+<style>
+  .cta-band :global(.container) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-band__eyebrow {
+    margin-bottom: var(--space-3);
+  }
+
+  .cta-band__heading {
+    max-width: 34rem;
+  }
+
+  .cta-band__sub {
+    margin-top: var(--space-4);
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+  }
+
+  .cta-band__fineprint {
+    margin-top: var(--space-5);
+    font-size: var(--text-xs);
+  }
+</style>

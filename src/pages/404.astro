@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Button from "../components/ui/Button.astro";
+import { CTA as CTA_COPY } from "../data/site";
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you're looking for can't be found. Get your final expense insurance quote or head back to the homepage."
+  noindex={true}
+>
+  <Section tone="paper" centered class="not-found">
+    <p class="eyebrow">404</p>
+    <h1>We couldn't find that page</h1>
+    <p class="lede">
+      The page you're looking for may have moved. You can head back home or
+      go straight to your free final expense insurance quote.
+    </p>
+    <div class="not-found__actions">
+      <Button href={CTA_COPY.quoteHref} variant="primary" size="lg" trackEvent="quote_cta_click">
+        {CTA_COPY.primary}
+      </Button>
+      <Button href="/" variant="secondary" size="lg">Back to Home</Button>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .not-found :global(.container) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: var(--space-10);
+  }
+
+  .not-found .lede {
+    margin-top: var(--space-4);
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+  }
+</style>

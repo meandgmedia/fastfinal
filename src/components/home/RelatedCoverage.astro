@@ -1,0 +1,64 @@
+---
+import Section from "../ui/Section.astro";
+import Card from "../ui/Card.astro";
+import { RELATED_COVERAGE } from "../../data/site";
+---
+
+<Section
+  tone="paper"
+  eyebrow="Related Coverage"
+  heading="Explore related coverage types"
+  subheading="Final expense insurance goes by a few different names depending on how it's used — explore the option that matches what you're looking for."
+>
+  <ul class="related">
+    {
+      RELATED_COVERAGE.map((item) => (
+        <Card as="li" href={item.href} padding="md" class="related__card">
+          <span class="related__label">{item.label}</span>
+          <span class="related__arrow" aria-hidden="true">→</span>
+        </Card>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .related {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .related__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .related__label {
+    font-weight: 600;
+    color: var(--color-ink-900);
+  }
+
+  .related__arrow {
+    color: var(--color-accent-600);
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .related__card:hover .related__arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 900px) {
+    .related {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .related {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

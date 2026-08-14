@@ -1,0 +1,78 @@
+---
+import Section from "../ui/Section.astro";
+import Card from "../ui/Card.astro";
+
+const benefits = [
+  {
+    title: "Affordable coverage amounts",
+    description: "Choose a coverage amount that fits your budget and your family's needs.",
+  },
+  {
+    title: "Simplified application options",
+    description: "Many products are designed to be quick to apply for, with straightforward questions.",
+  },
+  {
+    title: "Built for end-of-life expenses",
+    description: "Coverage designed specifically to help with funeral, burial, and related costs.",
+  },
+  {
+    title: "Options for older adults",
+    description: "Products available for a range of ages, including applicants later in life.",
+  },
+  {
+    title: "No medical exam, depending on product",
+    description: "Some final expense products don't require a medical exam to apply.",
+  },
+  {
+    title: "Flexible payment options",
+    description: "Premium payment schedules that can work with a fixed income.",
+  },
+  {
+    title: "Apply online",
+    description: "Get a quote, compare options, and complete your application from home.",
+  },
+];
+---
+
+<Section
+  tone="alt"
+  eyebrow="Why Final Expense Insurance"
+  heading="Why choose final expense insurance?"
+  subheading="A straightforward way to help your family avoid unexpected costs, on a timeline that works for you."
+>
+  <ul class="benefits">
+    {
+      benefits.map((benefit) => (
+        <Card as="li" padding="md" class="benefits__card">
+          <h3 class="benefits__title">{benefit.title}</h3>
+          <p class="text-muted">{benefit.description}</p>
+        </Card>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .benefits__title {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-2);
+  }
+
+  @media (max-width: 900px) {
+    .benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .benefits {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

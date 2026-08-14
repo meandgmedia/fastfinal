@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import RouteLine from "../../components/ui/RouteLine.astro";
+import QuoteRater from "../../components/quote/QuoteRater.astro";
+import FAQAccordion from "../../components/faq/FAQAccordion.astro";
+import { SITE } from "../../data/site";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
+import { HOMEPAGE_FAQS } from "../../data/faq";
+
+const title = "Get Your Final Expense Insurance Quote";
+const description =
+  "Get your free final expense insurance quote online. Compare your available options and apply — coverage available for eligible applicants.";
+const path = "/get-a-quote/";
+
+// Reuse the three questions from the homepage FAQ that are most relevant
+// to someone who's actually on the quote page right now.
+const quotePageFaqs = HOMEPAGE_FAQS.filter((item) =>
+  [
+    "How much does final expense insurance cost?",
+    "Do I need a medical exam?",
+    "How quickly can I get coverage?",
+  ].includes(item.question)
+);
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Get a Quote", path },
+  ]),
+  faqSchema(quotePageFaqs),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema} hideStickyCta>
+  <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Get a Quote", path }]} />
+
+  <Section tone="paper">
+    <div class="quote-page">
+      <div class="quote-page__intro">
+        <p class="eyebrow">Final Expense Insurance</p>
+        <h1>Get Your Final Expense Insurance Quote</h1>
+        <p class="lede">
+          Compare your options and find coverage that fits your needs.
+          Answer a few quick questions to see what may be available to you —
+          there's no obligation to apply.
+        </p>
+
+        <div class="quote-page__route">
+          <RouteLine activeStep={1} compact />
+        </div>
+
+        <div class="quote-page__alt">
+          <h2 class="quote-page__alt-heading">Prefer to talk it through?</h2>
+          <p class="text-muted">
+            You can also reach us directly and we'll help you compare
+            options over the phone.
+          </p>
+          <a class="quote-page__phone" href={`tel:${SITE.phone.tel}`} data-track-event="phone_click">
+            Call {SITE.phone.display}
+          </a>
+        </div>
+      </div>
+
+      <div class="quote-page__widget">
+        <QuoteRater />
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="surface" eyebrow="Questions" heading="Before you get started" width="narrow" centered>
+    <FAQAccordion items={quotePageFaqs} />
+  </Section>
+</BaseLayout>
+
+<style>
+  .quote-page {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-9);
+    align-items: start;
+  }
+
+  .quote-page__intro h1 {
+    margin-top: var(--space-3);
+  }
+
+  .quote-page__intro .lede {
+    margin-top: var(--space-5);
+  }
+
+  .quote-page__route {
+    margin-top: var(--space-8);
+  }
+
+  .quote-page__alt {
+    margin-top: var(--space-9);
+    padding-top: var(--space-7);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .quote-page__alt-heading {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-2);
+  }
+
+  .quote-page__phone {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-ink-900);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-accent-500);
+  }
+
+  @media (max-width: 900px) {
+    .quote-page {
+      grid-template-columns: 1fr;
+    }
+
+    .quote-page__widget {
+      order: -1;
+    }
+  }
+</style>

@@ -1,0 +1,186 @@
+---
+import Container from "../ui/Container.astro";
+import { SITE, FOOTER_NAV, FOOTER_LEGAL, CTA as CTA_COPY } from "../../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <Container width="wide">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="footer__brand-link">
+          <svg class="footer__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="var(--color-paper-050)"></rect>
+            <path d="M32 10 L50 17 V30 C50 42 42.5 50.5 32 55 C21.5 50.5 14 42 14 30 V17 Z" fill="var(--color-ink-900)"></path>
+            <path d="M32 15 L45 20.3 V30 C45 39.3 39.3 46 32 49.6 C24.7 46 19 39.3 19 30 V20.3 Z" fill="var(--color-paper-050)"></path>
+            <path d="M23 31.5 L29 37.5 L41.5 24" fill="none" stroke="var(--color-accent-500)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>{SITE.name}</span>
+        </a>
+        <p class="footer__desc">
+          Compare final expense insurance options online and apply at your own pace — quote, compare, apply, get covered.
+        </p>
+        <a href={CTA_COPY.quoteHref} class="footer__cta-link" data-track-event="quote_cta_click">
+          {CTA_COPY.primary} →
+        </a>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h3 class="footer__heading">Site</h3>
+        <ul>
+          {FOOTER_NAV.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Contact</h3>
+        <ul>
+          <li><a href={`tel:${SITE.phone.tel}`} data-track-event="phone_click">{SITE.phone.display}</a></li>
+          <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li><a href="/contact/">Contact form</a></li>
+        </ul>
+      </div>
+
+      <nav class="footer__legal" aria-label="Legal">
+        <h3 class="footer__heading">Legal</h3>
+        <ul>
+          {FOOTER_LEGAL.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+    </div>
+
+    <hr class="hr footer__divider" />
+
+    <div class="footer__disclaimer">
+      <p>
+        {/* TODO: Insert real legal business name, license numbers, and states of licensure once available. */}
+        {SITE.name} is a marketing website for final expense insurance products.
+        <strong> [Legal business name — placeholder]</strong> is a licensed insurance agency
+        <strong> [license number(s) — placeholder]</strong>. Not all applicants will qualify for coverage,
+        and not all products or coverage amounts are available in every state. Quotes are estimates and
+        are not a guarantee of coverage, rate, or approval. Coverage is issued by third-party insurance
+        carriers, not by {SITE.shortName}. Final approval and any offer of coverage are subject to the
+        underwriting guidelines of the issuing carrier.
+      </p>
+      <p class="text-subtle">
+        © {year} {SITE.name}. All rights reserved. <span class="footer__domain">{SITE.domain}</span>
+      </p>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-ink-900);
+    color: var(--color-text-on-dark-muted);
+    padding-block: var(--space-9) var(--space-7);
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__brand-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: var(--color-text-on-dark);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .footer__mark {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .footer__desc {
+    margin-top: var(--space-4);
+    max-width: 26rem;
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .footer__cta-link {
+    display: inline-block;
+    margin-top: var(--space-5);
+    color: var(--color-accent-500);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .footer__cta-link:hover {
+    color: var(--color-accent-300);
+  }
+
+  .footer__heading {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-ink-200);
+    margin-bottom: var(--space-4);
+    font-weight: 600;
+  }
+
+  .footer__nav ul,
+  .footer__contact ul,
+  .footer__legal ul {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .footer__nav a,
+  .footer__contact a,
+  .footer__legal a {
+    text-decoration: none;
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--text-sm);
+  }
+
+  .footer__nav a:hover,
+  .footer__contact a:hover,
+  .footer__legal a:hover {
+    color: var(--color-text-on-dark);
+  }
+
+  .footer__divider {
+    border-top-color: var(--color-ink-700);
+    margin-block: var(--space-8);
+  }
+
+  .footer__disclaimer {
+    display: grid;
+    gap: var(--space-4);
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+    max-width: 68rem;
+  }
+
+  .footer__disclaimer strong {
+    color: var(--color-ink-200);
+    font-weight: 600;
+  }
+
+  .footer__domain {
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 900px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      gap: var(--space-7);
+    }
+  }
+</style>

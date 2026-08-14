@@ -1,0 +1,88 @@
+---
+interface Props {
+  label: string;
+  name: string;
+  required?: boolean;
+  placeholder?: string;
+  rows?: number;
+  hint?: string;
+  class?: string;
+}
+
+const {
+  label,
+  name,
+  required = false,
+  placeholder,
+  rows = 5,
+  hint,
+  class: className = "",
+} = Astro.props;
+
+const id = `field-${name}`;
+const hintId = hint ? `${id}-hint` : undefined;
+---
+
+<div class:list={["field", className]}>
+  <label class="field__label" for={id}>
+    {label}
+    {required && <span class="field__required" aria-hidden="true">*</span>}
+  </label>
+  <textarea
+    class="field__input field__textarea"
+    id={id}
+    name={name}
+    required={required}
+    placeholder={placeholder}
+    rows={rows}
+    aria-describedby={hintId}
+  ></textarea>
+  {hint && <p class="field__hint" id={hintId}>{hint}</p>}
+</div>
+
+<style>
+  .field {
+    display: grid;
+    gap: var(--space-2);
+    text-align: left;
+  }
+
+  .field__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ink-800);
+  }
+
+  .field__required {
+    color: var(--color-accent-700);
+    margin-left: 0.15rem;
+  }
+
+  .field__input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-border);
+    background: var(--color-surface);
+    font-size: var(--text-base);
+    font-family: inherit;
+  }
+
+  .field__textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  .field__input:hover {
+    border-color: var(--color-ink-400);
+  }
+
+  .field__input:focus-visible {
+    border-color: var(--color-ink-800);
+  }
+
+  .field__hint {
+    font-size: var(--text-xs);
+    color: var(--color-text-subtle);
+  }
+</style>

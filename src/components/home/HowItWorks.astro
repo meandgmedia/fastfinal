@@ -1,0 +1,77 @@
+---
+import Section from "../ui/Section.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Get Your Quote",
+    description: "Answer a few questions about yourself and the coverage you want.",
+  },
+  {
+    number: "02",
+    title: "Compare Your Options",
+    description: "See available final expense insurance options based on your information.",
+  },
+  {
+    number: "03",
+    title: "Apply & Get Covered",
+    description: "Complete your application and, if approved and eligible, get coverage quickly.",
+  },
+];
+---
+
+<Section
+  tone="surface"
+  eyebrow="How It Works"
+  heading="A simple, three-step process"
+  subheading="Built to be fast without cutting corners — see your options and apply whenever you're ready."
+  centered
+>
+  <ol class="steps">
+    {
+      steps.map((step) => (
+        <li class="steps__item">
+          <span class="steps__number" aria-hidden="true">{step.number}</span>
+          <h3 class="steps__title">{step.title}</h3>
+          <p class="text-muted">{step.description}</p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+    counter-reset: step;
+  }
+
+  .steps__item {
+    position: relative;
+    padding-top: var(--space-6);
+    border-top: 2px solid var(--color-line-strong);
+  }
+
+  .steps__number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent-700);
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-3);
+  }
+
+  .steps__title {
+    margin-bottom: var(--space-3);
+  }
+
+  @media (max-width: 800px) {
+    .steps {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import { SITE } from "../../data/site";
+
+interface Props {
+  /** Page-specific title. The site name is appended automatically. */
+  title: string;
+  /** 150–160 character meta description. */
+  description: string;
+  /** Defaults to the current URL's pathname. Pass explicitly for canonical overrides. */
+  path?: string;
+  /** "website" | "article" — controls og:type. */
+  type?: "website" | "article";
+  /** Set to true on pages that should not be indexed (e.g. thank-you pages). */
+  noindex?: boolean;
+  /** One or more JSON-LD objects to inject as <script type="application/ld+json"> */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Open Graph image path relative to site root. Falls back to the default social share image. */
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  type = "website",
+  noindex = false,
+  schema,
+  ogImage = "/og/default.png",
+} = Astro.props;
+
+const canonicalURL = new URL(path, SITE.url).toString();
+const ogImageURL = new URL(ogImage, SITE.url).toString();
+const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
+const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:locale" content={SITE.locale} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+
+<!-- Structured data -->
+{
+  schemaList.map((entry) => (
+    <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+  ))
+}

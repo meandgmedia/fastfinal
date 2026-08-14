@@ -1,0 +1,15 @@
+---
+import Section from "../ui/Section.astro";
+import FAQAccordion from "../faq/FAQAccordion.astro";
+import { HOMEPAGE_FAQS } from "../../data/faq";
+---
+
+<Section
+  tone="surface"
+  eyebrow="FAQ"
+  heading="Common questions about final expense insurance"
+  width="narrow"
+  centered
+>
+  <FAQAccordion items={HOMEPAGE_FAQS} />
+</Section>

@@ -1,0 +1,75 @@
+---
+import Section from "../ui/Section.astro";
+
+const audiences = [
+  {
+    title: "Seniors",
+    description: "Looking for coverage designed around later-in-life needs.",
+  },
+  {
+    title: "Adults planning ahead",
+    description: "Who want arrangements in place before they're needed.",
+  },
+  {
+    title: "Families",
+    description: "Who want to protect loved ones from unexpected funeral expenses.",
+  },
+  {
+    title: "Budget-conscious shoppers",
+    description: "Looking for affordable, permanent life insurance options.",
+  },
+];
+---
+
+<Section
+  tone="ink"
+  eyebrow="Who It's For"
+  heading="Who is final expense insurance for?"
+>
+  <ul class="audience">
+    {
+      audiences.map((audience) => (
+        <li class="audience__item">
+          <h3 class="audience__title">{audience.title}</h3>
+          <p>{audience.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .audience {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-7);
+  }
+
+  .audience__item {
+    border-top: 2px solid var(--color-ink-700);
+    padding-top: var(--space-5);
+  }
+
+  .audience__title {
+    color: var(--color-text-on-dark);
+    margin-bottom: var(--space-2);
+  }
+
+  .audience__item p {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 900px) {
+    .audience {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .audience {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import Section from "../ui/Section.astro";
+import Card from "../ui/Card.astro";
+import Button from "../ui/Button.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+
+const amounts = ["$5,000", "$10,000", "$15,000", "$20,000", "$25,000"];
+---
+
+<Section
+  tone="surface"
+  eyebrow="Coverage Amounts"
+  heading="Example coverage amounts"
+  subheading="Available coverage amounts vary by carrier, age, health, and eligibility — these are common starting points to help you think through what you need."
+  centered
+>
+  <ul class="amounts">
+    {
+      amounts.map((amount) => (
+        <Card as="li" padding="md" class="amounts__card">
+          <span class="amounts__value text-mono">{amount}</span>
+          <span class="text-muted amounts__label">Example coverage amount</span>
+        </Card>
+      ))
+    }
+  </ul>
+
+  <div class="amounts__cta">
+    <Button href={CTA_COPY.quoteHref} variant="primary" size="lg" trackEvent="quote_cta_click">
+      {CTA_COPY.secondary}
+    </Button>
+  </div>
+</Section>
+
+<style>
+  .amounts {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+  }
+
+  .amounts__card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .amounts__value {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-ink-900);
+  }
+
+  .amounts__label {
+    font-size: var(--text-xs);
+  }
+
+  .amounts__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-8);
+  }
+
+  @media (max-width: 900px) {
+    .amounts {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .amounts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

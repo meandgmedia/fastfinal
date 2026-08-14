@@ -1,0 +1,56 @@
+---
+// Persistent bottom CTA bar shown only on small screens (see @media query
+// below) so the primary conversion action is always one tap away without
+// competing with the in-content CTAs on desktop.
+import { CTA as CTA_COPY } from "../../data/site";
+---
+
+<div class="sticky-cta" data-sticky-cta>
+  <a href={CTA_COPY.quoteHref} class="sticky-cta__link" data-track-event="quote_cta_click">
+    {CTA_COPY.primary}
+  </a>
+</div>
+
+<style>
+  .sticky-cta {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .sticky-cta {
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: var(--z-sticky);
+      padding: var(--space-3) var(--space-4);
+      padding-bottom: max(var(--space-3), env(safe-area-inset-bottom));
+      background: color-mix(in srgb, var(--color-bg) 94%, transparent);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .sticky-cta__link {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.95rem 1.5rem;
+      border-radius: var(--radius-pill);
+      background: var(--color-cta);
+      color: var(--color-cta-text);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: var(--text-base);
+    }
+
+    .sticky-cta__link:active {
+      background: var(--color-cta-active);
+    }
+
+    /* Reserve space at the bottom of the page so this bar never covers content. */
+    :global(body) {
+      padding-bottom: 4.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+import Container from "./Container.astro";
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subheading?: string;
+  /** Background tone. "paper" (default), "surface" (white card-like), "ink" (dark), "alt" (tinted). */
+  tone?: "paper" | "surface" | "ink" | "alt";
+  /** Center the header block. */
+  centered?: boolean;
+  width?: "default" | "narrow" | "wide";
+  id?: string;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  heading,
+  subheading,
+  tone = "paper",
+  centered = false,
+  width = "default",
+  id,
+  class: className = "",
+} = Astro.props;
+
+const hasHeader = Boolean(eyebrow || heading || subheading);
+---
+
+<section id={id} class:list={["section", `section--${tone}`, className]}>
+  <Container width={width}>
+    {
+      hasHeader && (
+        <div class:list={["section__header", { "section__header--centered": centered }]}>
+          {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+          {heading && <h2 class="section__heading">{heading}</h2>}
+          {subheading && <p class="lede section__subheading">{subheading}</p>}
+        </div>
+      )
+    }
+    <slot />
+  </Container>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--space-10);
+  }
+
+  .section--paper {
+    background: var(--color-bg);
+  }
+
+  .section--surface {
+    background: var(--color-surface);
+  }
+
+  .section--alt {
+    background: var(--color-surface-alt);
+  }
+
+  .section--ink {
+    background: var(--color-ink-900);
+    color: var(--color-text-on-dark);
+  }
+
+  .section--ink :global(h1),
+  .section--ink :global(h2),
+  .section--ink :global(h3),
+  .section--ink :global(h4) {
+    color: var(--color-text-on-dark);
+  }
+
+  .section__header {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+    max-width: 42rem;
+  }
+
+  .section__header--centered {
+    margin-inline: auto;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .section--ink .section__subheading {
+    color: var(--color-text-on-dark-muted);
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding-block: var(--space-8);
+    }
+
+    .section__header {
+      margin-bottom: var(--space-6);
+    }
+  }
+</style>

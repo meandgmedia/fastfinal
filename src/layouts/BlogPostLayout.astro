@@ -1,0 +1,206 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import CTA from "../components/ui/CTA.astro";
+import { SITE, CTA as CTA_COPY } from "../data/site";
+import { webPageSchema, breadcrumbSchema, articleSchema } from "../lib/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  author: string;
+}
+
+const { title, description, slug, publishDate, updatedDate, author } = Astro.props;
+const path = `/blog/${slug}/`;
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog/" },
+    { name: title, path },
+  ]),
+  articleSchema({
+    title,
+    description,
+    path,
+    datePublished: publishDate.toISOString(),
+    dateModified: updatedDate?.toISOString(),
+    authorName: author,
+  }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} type="article" schema={schema}>
+  <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog/" }, { name: title, path }]} />
+
+  <Section tone="paper">
+    <article class="post">
+      <header class="post__header">
+        <p class="eyebrow">{SITE.name} Blog</p>
+        <h1>{title}</h1>
+        <div class="post__meta text-subtle">
+          <span>{author}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={publishDate.toISOString()}>{dateFormatter.format(publishDate)}</time>
+        </div>
+      </header>
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      <footer class="post__footer">
+        <p class="text-muted">
+          Ready to see your own options? <a href={CTA_COPY.quoteHref}>{CTA_COPY.primary} →</a>
+        </p>
+      </footer>
+    </article>
+  </Section>
+
+  <CTA
+    heading="See your final expense insurance options"
+    subheading="Get your free quote and compare coverage amounts in minutes."
+    primaryLabel={CTA_COPY.primary}
+    secondaryLabel="Read more articles"
+    secondaryHref="/blog/"
+  />
+</BaseLayout>
+
+<style>
+  .post {
+    max-width: var(--container-narrow);
+    margin-inline: auto;
+  }
+
+  .post__header h1 {
+    margin-top: var(--space-3);
+  }
+
+  .post__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .prose {
+    margin-top: var(--space-8);
+  }
+
+  .post__footer {
+    margin-top: var(--space-9);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post__footer a {
+    color: var(--color-accent-700);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .post__footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- Markdown prose styling ---- */
+  .prose :global(h2) {
+    font-size: var(--text-xl);
+    margin-top: var(--space-9);
+    margin-bottom: var(--space-4);
+  }
+
+  .prose :global(h3) {
+    font-size: var(--text-md);
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-3);
+  }
+
+  .prose :global(p) {
+    max-width: none;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-5);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-bottom: var(--space-5);
+    padding-left: 1.4rem;
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .prose :global(ul) {
+    list-style: disc;
+  }
+
+  .prose :global(ol) {
+    list-style: decimal;
+  }
+
+  .prose :global(li) {
+    padding-left: var(--space-1);
+  }
+
+  .prose :global(li strong) {
+    color: var(--color-ink-900);
+  }
+
+  .prose :global(a) {
+    color: var(--color-accent-700);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-300);
+    text-underline-offset: 2px;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--color-accent-600);
+  }
+
+  .prose :global(strong) {
+    color: var(--color-ink-900);
+    font-weight: 600;
+  }
+
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .prose :global(th) {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-subtle);
+  }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--color-accent-500);
+    padding-left: var(--space-5);
+    margin: var(--space-6) 0;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>

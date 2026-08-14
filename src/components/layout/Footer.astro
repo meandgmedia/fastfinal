@@ -63,7 +63,7 @@ const year = new Date().getFullYear();
         carriers, not by {SITE.shortName}. Final approval and any offer of coverage are subject to the
         underwriting guidelines of the issuing carrier.
       </p>
-      <p class="text-subtle">
+      <p class="text-on-dark-subtle">
         © {year} {SITE.name}. All rights reserved. <span class="footer__domain">{SITE.domain}</span>
       </p>
     </div>
@@ -138,6 +138,8 @@ const year = new Date().getFullYear();
   .footer__nav a,
   .footer__contact a,
   .footer__legal a {
+    display: inline-block;
+    padding-block: var(--space-1);
     text-decoration: none;
     color: var(--color-text-on-dark-muted);
     font-size: var(--text-sm);

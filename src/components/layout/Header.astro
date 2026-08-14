@@ -54,7 +54,7 @@ function isActive(href: string) {
         aria-expanded="false"
         aria-controls="mobile-nav"
       >
-        <span class="sr-only">Open menu</span>
+        <span class="sr-only" data-menu-toggle-label>Open menu</span>
         <span class="header__toggle-bars" aria-hidden="true"></span>
       </button>
     </div>
@@ -185,8 +185,8 @@ function isActive(href: string) {
 
   .header__toggle {
     display: none;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     align-items: center;
     justify-content: center;
     background: transparent;
@@ -315,12 +315,18 @@ function isActive(href: string) {
 <script>
   const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
   const menu = document.querySelector<HTMLElement>("[data-mobile-nav]");
+  const toggleLabel = document.querySelector<HTMLElement>("[data-menu-toggle-label]");
+
+  function setMenuLabel(isOpen: boolean) {
+    if (toggleLabel) toggleLabel.textContent = isOpen ? "Close menu" : "Open menu";
+  }
 
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!isOpen));
       menu.hidden = isOpen;
+      setMenuLabel(!isOpen);
       document.body.style.overflow = isOpen ? "" : "hidden";
     });
 
@@ -329,6 +335,7 @@ function isActive(href: string) {
       link.addEventListener("click", () => {
         toggle.setAttribute("aria-expanded", "false");
         menu.hidden = true;
+        setMenuLabel(false);
         document.body.style.overflow = "";
       });
     });
@@ -338,6 +345,7 @@ function isActive(href: string) {
       if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
         toggle.setAttribute("aria-expanded", "false");
         menu.hidden = true;
+        setMenuLabel(false);
         document.body.style.overflow = "";
         toggle.focus();
       }

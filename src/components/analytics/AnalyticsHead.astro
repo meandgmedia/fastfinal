@@ -12,6 +12,9 @@ const gtagId = ga4 ?? googleAds; // gtag.js only needs to be loaded once
 
 {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
 
+{gtagId && <link rel="preconnect" href="https://www.googletagmanager.com" />}
+{metaPixel && <link rel="preconnect" href="https://connect.facebook.net" />}
+
 {
   gtagId && (
     <>
@@ -57,6 +60,7 @@ const gtagId = ga4 ?? googleAds; // gtag.js only needs to be loaded once
           height="1"
           width="1"
           style="display:none"
+          alt=""
           src={`https://www.facebook.com/tr?id=${metaPixel}&ev=PageView&noscript=1`}
         />
       </noscript>

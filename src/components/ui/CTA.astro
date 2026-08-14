@@ -42,7 +42,7 @@ const {
       )
     }
   </div>
-  <p class="cta-band__fineprint text-subtle">
+  <p class:list={["cta-band__fineprint", tone === "ink" ? "text-on-dark-subtle" : "text-subtle"]}>
     No obligation. Coverage available for eligible applicants.
   </p>
 </Section>

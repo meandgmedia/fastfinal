@@ -132,12 +132,25 @@ p {
   display: inline-block;
 }
 
+/* Eyebrow text needs a lighter accent shade to stay readable on the dark
+   (ink) section background — accent-700 is tuned for light backgrounds. */
+.section--ink .eyebrow {
+  color: var(--color-accent-500);
+}
+
 .text-muted {
   color: var(--color-text-muted);
 }
 
 .text-subtle {
   color: var(--color-text-subtle);
+}
+
+/* For subtle/fine-print text on dark (ink) backgrounds — .text-subtle's
+   color is only readable on light backgrounds; this is its dark-background
+   counterpart, using the same on-dark-muted color as nav links etc. */
+.text-on-dark-subtle {
+  color: var(--color-text-on-dark-muted);
 }
 
 .text-mono {

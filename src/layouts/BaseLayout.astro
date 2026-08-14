@@ -10,6 +10,8 @@ import "@fontsource/ibm-plex-mono/600.css";
 import "../styles/global.css";
 
 import SEO from "../components/seo/SEO.astro";
+import AnalyticsHead from "../components/analytics/AnalyticsHead.astro";
+import TrackingScript from "../components/analytics/TrackingScript.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import StickyMobileCTA from "../components/layout/StickyMobileCTA.astro";
@@ -56,6 +58,7 @@ const pageSchema = [organizationSchema(), websiteSchema(), ...(schema ? (Array.i
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <SEO title={title} description={description} path={path} type={type} noindex={noindex} schema={pageSchema} ogImage={ogImage} appendBrand={appendBrand} />
+    <AnalyticsHead />
 
     <slot name="head" />
   </head>
@@ -67,5 +70,6 @@ const pageSchema = [organizationSchema(), websiteSchema(), ...(schema ? (Array.i
     </main>
     <Footer />
     {!hideStickyCta && <StickyMobileCTA />}
+    <TrackingScript />
   </body>
 </html>

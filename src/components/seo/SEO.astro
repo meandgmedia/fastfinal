@@ -66,6 +66,6 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 <!-- Structured data -->
 {
   schemaList.map((entry) => (
-    <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(entry)} />
   ))
 }

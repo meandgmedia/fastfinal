@@ -1,0 +1,65 @@
+---
+// Defines a single global `trackConversionEvent()` function and wires it up
+// to every element already marked with `data-track-event="..."` across the
+// site (CTA buttons, phone links, etc. — see Button.astro, Header.astro,
+// Footer.astro, StickyMobileCTA.astro). No third-party script is required
+// for this to work: it always pushes to window.dataLayer (harmless even if
+// GA4 isn't loaded) and calls gtag/fbq only if those functions exist.
+//
+// FUTURE INTEGRATIONS (e.g. the Back Nine quote rater) should call
+// `window.trackConversionEvent("quote_completed", { ...params })` directly
+// rather than relying on a click listener, since those events don't
+// correspond to a single click.
+---
+
+<script>
+  type ConversionParams = Record<string, unknown>;
+
+  function trackConversionEvent(eventName: string, params: ConversionParams = {}) {
+    const w = window as typeof window & {
+      dataLayer?: unknown[];
+      gtag?: (...args: unknown[]) => void;
+      fbq?: (...args: unknown[]) => void;
+    };
+
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: eventName, ...params });
+
+    if (typeof w.gtag === "function") {
+      w.gtag("event", eventName, params);
+    }
+
+    if (typeof w.fbq === "function") {
+      w.fbq("trackCustom", eventName, params);
+    }
+
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.debug("[analytics]", eventName, params);
+    }
+  }
+
+  // Expose globally so future integrations (the Back Nine widget, the
+  // contact form once it's wired to a provider, etc.) can call it directly.
+  declare global {
+    interface Window {
+      trackConversionEvent: typeof trackConversionEvent;
+    }
+  }
+  window.trackConversionEvent = trackConversionEvent;
+
+  // Wire up every element already marked with data-track-event.
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement | null;
+    const trigger = target?.closest<HTMLElement>("[data-track-event]");
+    if (!trigger) return;
+
+    const eventName = trigger.dataset.trackEvent;
+    if (!eventName) return;
+
+    trackConversionEvent(eventName, {
+      link_url: trigger.getAttribute("href") ?? undefined,
+      link_text: trigger.textContent?.trim().slice(0, 100),
+    });
+  });
+</script>

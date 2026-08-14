@@ -1,0 +1,65 @@
+---
+// Renders third-party analytics loader scripts, but only for the providers
+// that actually have an ID configured (see src/lib/analytics.ts). With no
+// env vars set — the out-of-the-box state of this project — this component
+// renders nothing, so no third-party network requests happen and no
+// placeholder/fake tracking IDs ever ship to production.
+import { ANALYTICS_IDS } from "../../lib/analytics";
+
+const { ga4, googleAds, metaPixel, gscVerification } = ANALYTICS_IDS;
+const gtagId = ga4 ?? googleAds; // gtag.js only needs to be loaded once
+---
+
+{gscVerification && <meta name="google-site-verification" content={gscVerification} />}
+
+{
+  gtagId && (
+    <>
+      <script async is:inline src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`} />
+      <script is:inline define:vars={{ ga4: ga4 ?? null, googleAds: googleAds ?? null }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        if (ga4) gtag("config", ga4);
+        if (googleAds) gtag("config", googleAds);
+      </script>
+    </>
+  )
+}
+
+{
+  metaPixel && (
+    <>
+      <script is:inline define:vars={{ metaPixel }}>
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", metaPixel);
+        fbq("track", "PageView");
+      </script>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style="display:none"
+          src={`https://www.facebook.com/tr?id=${metaPixel}&ev=PageView&noscript=1`}
+        />
+      </noscript>
+    </>
+  )
+}

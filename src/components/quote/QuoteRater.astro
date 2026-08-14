@@ -26,10 +26,14 @@
 //      component) rather than in the global layout, so it never loads on
 //      pages that don't render the quote rater — this keeps the rest of
 //      the site's Core Web Vitals unaffected by the third-party widget.
-//   4. If Back Nine's widget fires its own events (quote started/completed,
-//      application started/completed), wire those into the analytics
-//      event names already defined for this build: `quote_started`,
-//      `quote_completed`, `application_started`, `application_completed`.
+//   4. If Back Nine's widget fires its own events (quote completed,
+//      application started/completed), call
+//      `window.trackConversionEvent("quote_completed", { ...params })`
+//      (or "application_started" / "application_completed") from those
+//      callbacks. The function is defined globally by
+//      src/components/analytics/TrackingScript.astro and pushes to
+//      window.dataLayer / gtag / fbq automatically — see src/lib/analytics.ts
+//      for the full list of canonical event names.
 //   5. Do not invent Back Nine API credentials, endpoints, or request/
 //      response shapes ahead of time — those come from Back Nine directly.
 // =============================================================================
@@ -129,6 +133,27 @@ const { variant = "full" } = Astro.props;
     and not a guarantee of coverage, rate, or approval.
   </p>
 </div>
+
+<script>
+  // Fire the "quote_started" conversion event the first time someone
+  // interacts with the quote form on this page — a real, working event
+  // even though the form itself isn't wired to a backend yet.
+  document.querySelectorAll<HTMLElement>("[data-quote-rater]").forEach((widget) => {
+    let started = false;
+    const form = widget.querySelector("form");
+    if (!form) return;
+
+    form.addEventListener(
+      "focusin",
+      () => {
+        if (started) return;
+        started = true;
+        (window as any).trackConversionEvent?.("quote_started");
+      },
+      { once: true }
+    );
+  });
+</script>
 
 <style>
   .quote-rater {

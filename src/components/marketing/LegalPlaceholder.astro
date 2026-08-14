@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../ui/Breadcrumbs.astro";
+import Section from "../ui/Section.astro";
+import { webPageSchema, breadcrumbSchema } from "../../lib/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  intro: string;
+  whatWillBeCovered: string[];
+}
+
+const { title, description, path, intro, whatWillBeCovered } = Astro.props;
+
+const schema = [
+  webPageSchema({ title, description, path }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: title, path },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema} noindex>
+  <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: title, path }]} />
+
+  <Section tone="paper" width="narrow">
+    <p class="eyebrow">Legal</p>
+    <h1>{title}</h1>
+    <p class="lede">{intro}</p>
+
+    <div class="legal-placeholder">
+      <p class="legal-placeholder__label text-mono text-subtle">Placeholder — not yet published</p>
+      <p class="text-muted">
+        This page isn't final. Once our full {title.toLowerCase()} is ready, it will replace this
+        notice and cover, at minimum:
+      </p>
+      <ul class="legal-placeholder__list text-muted">
+        {whatWillBeCovered.map((item) => <li>{item}</li>)}
+      </ul>
+      <p class="text-muted">
+        Questions in the meantime? <a href="/contact/">Contact us</a> and we'll help directly.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-top: var(--space-3);
+  }
+
+  .lede {
+    margin-top: var(--space-5);
+  }
+
+  .legal-placeholder {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .legal-placeholder__label {
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .legal-placeholder__list {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: 1.2rem;
+    list-style: disc;
+  }
+
+  .legal-placeholder a {
+    color: var(--color-accent-700);
+    font-weight: 600;
+  }
+</style>

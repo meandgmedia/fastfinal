@@ -2,7 +2,7 @@
 title: "What Is Final Expense Insurance? A Simple Guide"
 description: "A plain-language guide to what final expense insurance is, what it pays for, how it works, and how to get a quote."
 publishDate: 2026-01-15
-author: "Fast Final Expense Insurance"
+author: "Florida Final Expense Insurance"
 tags: ["final expense insurance", "guide"]
 ---
 

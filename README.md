@@ -1,6 +1,6 @@
-# Fast Final Expense Insurance
+# Florida Final Expense Insurance
 
-Marketing and lead-generation website for **Fast Final Expense Insurance** — get a quote, compare options, apply online. Built with [Astro](https://astro.build), deployed to Cloudflare Pages.
+Marketing and lead-generation website for **Florida Final Expense Insurance** — get a quote, compare options, apply online. Currently licensed to offer coverage in Florida only (see `SERVICE_AREA` in `src/data/site.ts`). Built with [Astro](https://astro.build), deployed to Cloudflare Pages.
 
 Production: **https://fastfinalexpenseinsurance.com**
 
@@ -45,7 +45,7 @@ src/
     ui/            Design-system primitives (Button, Card, Section, Container, CTA, RouteLine, Breadcrumbs)
   content/
     blog/          Blog posts (Markdown), schema defined in src/content.config.ts
-  data/            Site-wide config: nav, CTA copy, FAQ content (single source of truth)
+  data/            Site-wide config: nav, CTA copy, FAQ content, SERVICE_AREA (single source of truth)
   layouts/         BaseLayout.astro (document shell), BlogPostLayout.astro
   lib/             schema.ts (JSON-LD builders), analytics.ts (tracking config)
   pages/           File-based routes

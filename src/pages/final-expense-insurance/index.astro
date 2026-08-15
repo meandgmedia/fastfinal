@@ -7,13 +7,13 @@ import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
 import FAQAccordion from "../../components/faq/FAQAccordion.astro";
 import CTA from "../../components/ui/CTA.astro";
 import Card from "../../components/ui/Card.astro";
-import { CTA as CTA_COPY } from "../../data/site";
+import { CTA as CTA_COPY, SERVICE_AREA } from "../../data/site";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
 import { FINAL_EXPENSE_PAGE_FAQS } from "../../data/faq";
 
-const title = "Final Expense Insurance";
+const title = "Final Expense Insurance in Florida";
 const description =
-  "Learn how final expense insurance works, what it covers, and what affects your cost. Compare coverage amounts and get your free quote online.";
+  "Learn how final expense insurance works, what it covers, and what affects your cost in Florida. Compare coverage amounts and get your free quote online.";
 const path = "/final-expense-insurance/";
 
 const howItWorks = [
@@ -64,9 +64,9 @@ const schema = [
 
 <BaseLayout title={title} description={description} path={path} schema={schema}>
   <PageHero
-    eyebrow="Final Expense Insurance"
+    eyebrow={`Final Expense Insurance in ${SERVICE_AREA.stateName}`}
     heading="Final Expense Insurance"
-    lede="A smaller, permanent life insurance policy built to help your family cover funeral, burial, and other end-of-life costs — with an application process designed to be simple."
+    lede={`A smaller, permanent life insurance policy built to help your family cover funeral, burial, and other end-of-life costs — with an application process designed to be simple. Currently available to ${SERVICE_AREA.stateName} residents.`}
     breadcrumbs={[{ name: "Home", path: "/" }, { name: "Final Expense Insurance", path }]}
     secondaryLabel={CTA_COPY.secondary}
     secondaryHref={CTA_COPY.quoteHref}

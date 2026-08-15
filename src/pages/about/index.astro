@@ -4,12 +4,12 @@ import PageHero from "../../components/marketing/PageHero.astro";
 import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
 import Section from "../../components/ui/Section.astro";
 import CTA from "../../components/ui/CTA.astro";
-import { SITE, CTA as CTA_COPY } from "../../data/site";
+import { SITE, SERVICE_AREA, CTA as CTA_COPY } from "../../data/site";
 import { webPageSchema, breadcrumbSchema } from "../../lib/schema";
 
 const title = "About Us";
 const description =
-  "Learn about Fast Final Expense Insurance and how we help people compare and apply for final expense insurance online.";
+  "Learn about Florida Final Expense Insurance and how we help people compare and apply for final expense insurance online.";
 const path = "/about/";
 
 const pillars = [
@@ -44,7 +44,7 @@ const schema = [
   <PageHero
     eyebrow="About"
     heading={`About ${SITE.name}`}
-    lede="We help people compare and apply for final expense insurance online — built around a simple idea: getting covered shouldn't be complicated."
+    lede="We help Florida residents compare and apply for final expense insurance online — built around a simple idea: getting covered shouldn't be complicated."
     breadcrumbs={[{ name: "Home", path: "/" }, { name: "About", path }]}
     secondaryLabel={CTA_COPY.secondary}
     secondaryHref={CTA_COPY.quoteHref}
@@ -61,7 +61,9 @@ const schema = [
         application — all online, at your own pace.
       </p>
       <p>
-        We connect visitors with final expense insurance products issued by
+        We're currently licensed to offer coverage in {SERVICE_AREA.stateName} only,
+        so our quotes and applications are available to {SERVICE_AREA.stateName} residents
+        at this time. We connect visitors with final expense insurance products issued by
         third-party carriers. We aren't an insurance carrier ourselves, and
         we don't guarantee approval or coverage for any applicant — final
         underwriting decisions are made by the issuing carrier based on your
@@ -82,9 +84,9 @@ const schema = [
     <div class="prose-block company-details">
       <h2>Company details</h2>
       <p class="text-muted">
-        We believe in being upfront about who we are. The details below are
-        placeholders and will be updated with our full legal and licensing
-        information.
+        We believe in being upfront about who we are. Our legal business
+        name and license number are still being finalized and will replace
+        the placeholders below once available.
       </p>
       <dl class="company-details__list">
         <div>
@@ -97,7 +99,7 @@ const schema = [
         </div>
         <div>
           <dt>States of licensure</dt>
-          <dd>[States of licensure — placeholder]</dd>
+          <dd>{SERVICE_AREA.stateName}</dd>
         </div>
         <div>
           <dt>Contact</dt>

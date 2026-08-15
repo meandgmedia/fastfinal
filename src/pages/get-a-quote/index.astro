@@ -5,19 +5,20 @@ import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import RouteLine from "../../components/ui/RouteLine.astro";
 import QuoteRater from "../../components/quote/QuoteRater.astro";
 import FAQAccordion from "../../components/faq/FAQAccordion.astro";
-import { SITE } from "../../data/site";
+import { SITE, SERVICE_AREA } from "../../data/site";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
 import { HOMEPAGE_FAQS } from "../../data/faq";
 
-const title = "Get Your Final Expense Insurance Quote";
+const title = "Get Your Florida Final Expense Insurance Quote";
 const description =
-  "Get your free final expense insurance quote online. Compare your available options and apply — coverage available for eligible applicants.";
+  "Get your free Florida final expense insurance quote online. Compare your available options and apply — coverage available for eligible Florida residents.";
 const path = "/get-a-quote/";
 
-// Reuse the three questions from the homepage FAQ that are most relevant
-// to someone who's actually on the quote page right now.
+// Reuse the questions from the homepage FAQ that are most relevant to
+// someone who's actually on the quote page right now.
 const quotePageFaqs = HOMEPAGE_FAQS.filter((item) =>
   [
+    "Is Florida Final Expense Insurance available outside Florida?",
     "How much does final expense insurance cost?",
     "Do I need a medical exam?",
     "How quickly can I get coverage?",
@@ -40,12 +41,15 @@ const schema = [
   <Section tone="paper">
     <div class="quote-page">
       <div class="quote-page__intro">
-        <p class="eyebrow">Final Expense Insurance</p>
-        <h1>Get Your Final Expense Insurance Quote</h1>
+        <p class="eyebrow">Final Expense Insurance in {SERVICE_AREA.stateName}</p>
+        <h1>Get Your Florida Final Expense Insurance Quote</h1>
         <p class="lede">
           Compare your options and find coverage that fits your needs.
           Answer a few quick questions to see what may be available to you —
           there's no obligation to apply.
+        </p>
+        <p class="quote-page__area-note">
+          {SERVICE_AREA.shortDisclosure}
         </p>
 
         <div class="quote-page__route">
@@ -89,6 +93,13 @@ const schema = [
 
   .quote-page__intro .lede {
     margin-top: var(--space-5);
+  }
+
+  .quote-page__area-note {
+    margin-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-moss-700);
   }
 
   .quote-page__route {

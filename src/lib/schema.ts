@@ -5,7 +5,7 @@
 // aggregate rating data is ever generated here.
 // -----------------------------------------------------------------------
 
-import { SITE } from "../data/site";
+import { SITE, SERVICE_AREA } from "../data/site";
 
 type JsonLd = Record<string, unknown>;
 
@@ -19,6 +19,10 @@ export function organizationSchema(): JsonLd {
     // TODO: add "logo" once a production logo asset exists.
     // TODO: add "sameAs" social profile URLs once available.
     description: SITE.description,
+    areaServed: {
+      "@type": "State",
+      name: SERVICE_AREA.stateName,
+    },
   };
 }
 

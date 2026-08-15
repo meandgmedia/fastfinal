@@ -2,7 +2,7 @@
 title: "How Much Does Final Expense Insurance Cost?"
 description: "Learn what determines the cost of final expense insurance, with example pricing factors and how to get an accurate quote for your situation."
 publishDate: 2026-01-22
-author: "Fast Final Expense Insurance"
+author: "Florida Final Expense Insurance"
 tags: ["final expense insurance", "cost", "pricing"]
 ---
 

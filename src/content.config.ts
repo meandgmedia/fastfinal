@@ -9,7 +9,7 @@ const blog = defineCollection({
     description: z.string(),
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    author: z.string().default("Fast Final Expense Insurance"),
+    author: z.string().default("Florida Final Expense Insurance"),
     // Set true to keep a post out of the blog index and sitemap while it's
     // still being written/reviewed.
     draft: z.boolean().default(false),

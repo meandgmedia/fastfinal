@@ -15,6 +15,11 @@ export const HOMEPAGE_FAQS: FaqItem[] = [
       "Final expense insurance is a type of permanent life insurance designed to help cover end-of-life costs, such as funeral, burial, or cremation expenses. It typically offers a smaller coverage amount than traditional life insurance and is aimed at making the application process simple.",
   },
   {
+    question: "Is Florida Final Expense Insurance available outside Florida?",
+    answer:
+      "No. We're currently licensed to offer final expense insurance in Florida only, so our quotes and application process are available to Florida residents at this time.",
+  },
+  {
     question: "How much does final expense insurance cost?",
     answer:
       "Cost varies based on factors like your age, gender, health, tobacco use, and the coverage amount you choose. Because pricing differs by carrier and applicant, the most accurate way to see your cost is to request a personalized quote.",
@@ -58,6 +63,11 @@ export const HOMEPAGE_FAQS: FaqItem[] = [
 
 export const FINAL_EXPENSE_PAGE_FAQS: FaqItem[] = [
   {
+    question: "Is this available if I live outside Florida?",
+    answer:
+      "Not currently. We're licensed to offer final expense insurance in Florida only, so this coverage is available to Florida residents at this time.",
+  },
+  {
     question: "What's the difference between simplified issue and guaranteed issue final expense insurance?",
     answer:
       "Simplified issue policies ask a short list of health questions and don't require a medical exam — pricing and eligibility depend on your answers. Guaranteed issue policies don't ask health questions at all, but they often cost more per dollar of coverage and may include a graded death benefit for the first two to three years.",
@@ -86,6 +96,11 @@ export const FINAL_EXPENSE_PAGE_FAQS: FaqItem[] = [
 
 export const BURIAL_INSURANCE_PAGE_FAQS: FaqItem[] = [
   {
+    question: "Do you offer burial insurance outside Florida?",
+    answer:
+      "Not at this time. We're licensed to offer burial insurance in Florida only, so this coverage is available to Florida residents.",
+  },
+  {
     question: "Is burial insurance the same thing as final expense insurance?",
     answer:
       "Generally, yes — \"burial insurance\" and \"final expense insurance\" are commonly used to describe the same type of small, permanent life insurance policy intended to help cover funeral and burial-related costs.",
@@ -113,6 +128,11 @@ export const BURIAL_INSURANCE_PAGE_FAQS: FaqItem[] = [
 ];
 
 export const SENIOR_LIFE_PAGE_FAQS: FaqItem[] = [
+  {
+    question: "Is this available to seniors outside Florida?",
+    answer:
+      "Not currently. We're licensed to offer these products in Florida only, so they're available to Florida residents at this time.",
+  },
   {
     question: "Is there an age limit for life insurance for seniors?",
     answer:

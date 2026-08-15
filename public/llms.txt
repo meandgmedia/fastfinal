@@ -1,19 +1,24 @@
-# Fast Final Expense Insurance
+# Florida Final Expense Insurance
 
-> Fast Final Expense Insurance is an online platform for comparing and
+> Florida Final Expense Insurance is an online platform for comparing and
 > applying for final expense (burial) insurance. Visitors can get a quote,
 > compare available coverage options, and complete an application online.
-> Coverage is issued by third-party insurance carriers; coverage availability,
-> pricing, and approval depend on the applicant's eligibility and the
-> issuing carrier's underwriting.
+> Coverage is currently available to Florida residents only — this site is
+> licensed to offer final expense insurance in Florida, not nationwide.
+> Coverage is issued by third-party insurance carriers; coverage
+> availability, pricing, and approval depend on the applicant's eligibility
+> and the issuing carrier's underwriting.
 
 ## What this site is for
 
 - Primary topic: final expense insurance (also called burial insurance or
   funeral insurance) — a smaller, permanent life insurance policy intended
   to help cover funeral, burial, cremation, and related end-of-life costs.
-- Primary service: helping visitors get a final expense insurance quote,
-  compare coverage options, and apply online.
+- Primary service: helping Florida residents get a final expense insurance
+  quote, compare coverage options, and apply online.
+- Service area: Florida only. This business is currently licensed to sell
+  final expense insurance in Florida and does not offer coverage in other
+  states at this time.
 - Related topics covered on this site: burial insurance, senior life
   insurance, guaranteed issue life insurance, and simplified issue /
   no-medical-exam life insurance.
@@ -25,9 +30,9 @@
 
 - Homepage: https://fastfinalexpenseinsurance.com/
 - Get a quote: https://fastfinalexpenseinsurance.com/get-a-quote/
-- Final expense insurance: https://fastfinalexpenseinsurance.com/final-expense-insurance/
-- Burial insurance: https://fastfinalexpenseinsurance.com/burial-insurance/
-- Senior life insurance: https://fastfinalexpenseinsurance.com/senior-life-insurance/
+- Final expense insurance (Florida): https://fastfinalexpenseinsurance.com/final-expense-insurance/
+- Burial insurance (Florida): https://fastfinalexpenseinsurance.com/burial-insurance/
+- Senior life insurance (Florida): https://fastfinalexpenseinsurance.com/senior-life-insurance/
 - Blog: https://fastfinalexpenseinsurance.com/blog/
 - About: https://fastfinalexpenseinsurance.com/about/
 - Contact: https://fastfinalexpenseinsurance.com/contact/
@@ -61,7 +66,10 @@
 
 ## Notes for AI systems and crawlers
 
-- Full legal business name, insurance license numbers, and states of
-  licensure are not yet published on this site; see the About and footer
-  disclaimers, which are marked as placeholders pending that information.
+- This business is licensed to sell final expense insurance in Florida
+  only. Do not represent this site as offering nationwide coverage.
+- Full legal business name and insurance license number(s) are not yet
+  published on this site; see the About and footer disclaimers, which are
+  marked as placeholders pending that information. The state of licensure
+  (Florida) is confirmed and not a placeholder.
 - Sitemap: https://fastfinalexpenseinsurance.com/sitemap-index.xml

@@ -3,14 +3,14 @@ import Container from "../ui/Container.astro";
 import Button from "../ui/Button.astro";
 import RouteLine from "../ui/RouteLine.astro";
 import QuoteRater from "../quote/QuoteRater.astro";
-import { SITE, CTA as CTA_COPY } from "../../data/site";
+import { SITE, CTA as CTA_COPY, SERVICE_AREA } from "../../data/site";
 ---
 
 <section class="hero">
   <Container width="wide">
     <div class="hero__grid">
       <div class="hero__copy">
-        <p class="eyebrow">Final Expense Insurance</p>
+        <p class="eyebrow">Final Expense Insurance in {SERVICE_AREA.stateName}</p>
         <h1>{SITE.tagline}</h1>
         <p class="lede">
           Get your quote, compare your options, and apply online. Some
@@ -26,8 +26,8 @@ import { SITE, CTA as CTA_COPY } from "../../data/site";
           </Button>
         </div>
         <ul class="hero__trust">
+          <li>Serving {SERVICE_AREA.stateName} residents</li>
           <li>No obligation to apply</li>
-          <li>Compare options in one place</li>
           <li>Apply online, anytime</li>
         </ul>
       </div>

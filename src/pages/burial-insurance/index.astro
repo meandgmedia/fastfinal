@@ -7,13 +7,13 @@ import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
 import FAQAccordion from "../../components/faq/FAQAccordion.astro";
 import CTA from "../../components/ui/CTA.astro";
 import RouteLine from "../../components/ui/RouteLine.astro";
-import { CTA as CTA_COPY } from "../../data/site";
+import { CTA as CTA_COPY, SERVICE_AREA } from "../../data/site";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
 import { BURIAL_INSURANCE_PAGE_FAQS } from "../../data/faq";
 
-const title = "Burial Insurance";
+const title = "Burial Insurance in Florida";
 const description =
-  "Burial insurance helps your family cover funeral and burial costs. See what it covers, how it works, and get your free quote online.";
+  "Burial insurance helps Florida families cover funeral and burial costs. See what it covers, how it works, and get your free quote online.";
 const path = "/burial-insurance/";
 
 const whatItCovers = [
@@ -52,9 +52,9 @@ const schema = [
 
 <BaseLayout title={title} description={description} path={path} schema={schema}>
   <PageHero
-    eyebrow="Burial Insurance"
+    eyebrow={`Burial Insurance in ${SERVICE_AREA.stateName}`}
     heading="Burial Insurance"
-    lede="Burial insurance — also called final expense insurance — is a small, permanent life insurance policy designed to help your family cover funeral and burial costs without financial strain."
+    lede={`Burial insurance — also called final expense insurance — is a small, permanent life insurance policy designed to help your family cover funeral and burial costs without financial strain. Currently available to ${SERVICE_AREA.stateName} residents.`}
     breadcrumbs={[{ name: "Home", path: "/" }, { name: "Burial Insurance", path }]}
     secondaryLabel={CTA_COPY.secondary}
     secondaryHref={CTA_COPY.quoteHref}

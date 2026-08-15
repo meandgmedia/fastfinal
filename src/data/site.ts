@@ -5,13 +5,13 @@
 // -----------------------------------------------------------------------
 
 export const SITE = {
-  name: "Fast Final Expense Insurance",
-  shortName: "Fast Final Expense",
+  name: "Florida Final Expense Insurance",
+  shortName: "Florida Final Expense",
   domain: "fastfinalexpenseinsurance.com",
   url: "https://fastfinalexpenseinsurance.com",
-  tagline: "Final Expense Insurance Made Fast & Simple",
+  tagline: "Florida Final Expense Insurance, Made Fast & Simple",
   description:
-    "Get your final expense insurance quote in minutes. Compare your options, apply online, and get covered quickly — coverage available for eligible applicants.",
+    "Get your Florida final expense insurance quote in minutes. Compare options, apply online, and get covered quickly — for eligible Florida residents.",
   locale: "en_US",
   // TODO: Replace with the real support/sales phone number once available.
   phone: {
@@ -20,6 +20,16 @@ export const SITE = {
   },
   // TODO: Replace with the real contact inbox once available.
   email: "hello@fastfinalexpenseinsurance.com",
+} as const;
+
+// Licensed/service area. Referenced by compliance messaging across the site
+// (hero, quote page, footer disclaimer, About, Insurance Disclosures, and
+// Organization schema) so the scope of service only needs to be updated in
+// one place if it ever expands beyond Florida.
+export const SERVICE_AREA = {
+  stateName: "Florida",
+  stateAbbr: "FL",
+  shortDisclosure: "Currently licensed to offer coverage in Florida only.",
 } as const;
 
 export type NavLink = {

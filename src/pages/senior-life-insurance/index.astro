@@ -6,13 +6,13 @@ import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
 import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
 import FAQAccordion from "../../components/faq/FAQAccordion.astro";
 import CTA from "../../components/ui/CTA.astro";
-import { CTA as CTA_COPY } from "../../data/site";
+import { CTA as CTA_COPY, SERVICE_AREA } from "../../data/site";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
 import { SENIOR_LIFE_PAGE_FAQS } from "../../data/faq";
 
-const title = "Senior Life Insurance";
+const title = "Senior Life Insurance in Florida";
 const description =
-  "Compare life insurance options for seniors, including term, whole, final expense, and guaranteed issue policies. Get your free quote online.";
+  "Compare life insurance options for Florida seniors, including term, whole, final expense, and guaranteed issue policies. Get your free quote online.";
 const path = "/senior-life-insurance/";
 
 const policyTypes = [
@@ -57,9 +57,9 @@ const schema = [
 
 <BaseLayout title={title} description={description} path={path} schema={schema}>
   <PageHero
-    eyebrow="Senior Life Insurance"
+    eyebrow={`Senior Life Insurance in ${SERVICE_AREA.stateName}`}
     heading="Life Insurance for Seniors"
-    lede="Life insurance options don't stop at a certain age. Whether you're looking for coverage to protect your family or a simple policy to cover final expenses, there are options built for seniors."
+    lede={`Life insurance options don't stop at a certain age. Whether you're looking for coverage to protect your family or a simple policy to cover final expenses, there are options built for seniors — currently available to ${SERVICE_AREA.stateName} residents.`}
     breadcrumbs={[{ name: "Home", path: "/" }, { name: "Senior Life Insurance", path }]}
     secondaryLabel={CTA_COPY.secondary}
     secondaryHref={CTA_COPY.quoteHref}

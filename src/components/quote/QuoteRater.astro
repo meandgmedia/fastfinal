@@ -1,120 +1,35 @@
 ---
 // =============================================================================
-// QUOTE RATER / APPLICATION WIDGET WILL BE INSTALLED HERE
+// QUOTE RATER — page-level chrome around the live Back Nine widget.
 // -----------------------------------------------------------------------------
-// This component is the dedicated integration point for the Back Nine
-// Insurance quote rater / application widget.
-//
-// WHAT THIS FILE CURRENTLY DOES:
-//   Renders a polished, static visual preview of the future quote flow
-//   (a multi-step "form" card) so the /get-a-quote/ page — and the hero
-//   preview on the homepage — look and feel like the real product before
-//   the integration exists. Nothing in this component submits data
-//   anywhere; there is no API call, no fake calculation, and no invented
-//   backend behavior.
-//
-// WHAT NEEDS TO HAPPEN WHEN THE BACK NINE INTEGRATION IS READY:
-//   1. Back Nine will provide one of: an <iframe> embed URL, a JS snippet/
-//      web component, or an API contract for a custom-built rater.
-//   2. Replace the contents of the <div class="quote-rater__surface"> block
-//      below with that embed/snippet/component. Everything outside that
-//      div (the eyebrow, heading, trust row, and card chrome) is the
-//      site's own UI and should stay as-is so the page doesn't need to be
-//      redesigned around the widget.
-//   3. If Back Nine requires a script tag, add it as an Astro `<script>`
-//      scoped to this component (or via a small client-side wrapper
-//      component) rather than in the global layout, so it never loads on
-//      pages that don't render the quote rater — this keeps the rest of
-//      the site's Core Web Vitals unaffected by the third-party widget.
-//   4. If Back Nine's widget fires its own events (quote completed,
-//      application started/completed), call
-//      `window.trackConversionEvent("quote_completed", { ...params })`
-//      (or "application_started" / "application_completed") from those
-//      callbacks. The function is defined globally by
-//      src/components/analytics/TrackingScript.astro and pushes to
-//      window.dataLayer / gtag / fbq automatically — see src/lib/analytics.ts
-//      for the full list of canonical event names.
-//   5. Do not invent Back Nine API credentials, endpoints, or request/
-//      response shapes ahead of time — those come from Back Nine directly.
+// The actual quote rater is the Back Nine embed rendered by
+// BackNineWidget.astro (see that file for integration notes/limitations).
+// This component just supplies the site's own framing around it — eyebrow,
+// heading, trust row, and compliance disclaimer — so the widget sits inside
+// the same card language used everywhere else on the site.
 // =============================================================================
 
+import BackNineWidget from "./BackNineWidget.astro";
+
 interface Props {
-  /** "full" (default) is the complete card used on /get-a-quote/. "compact" trims the trust row — used in tighter spaces. */
+  /** "full" (default) is the complete card used on /get-a-quote/. "compact" trims the trust row — used in tighter spaces like the homepage hero. */
   variant?: "full" | "compact";
+  /** Must be unique if this component is ever rendered more than once on the same page. */
+  containerId?: string;
 }
 
-const { variant = "full" } = Astro.props;
+const { variant = "full", containerId = "container-id" } = Astro.props;
 ---
 
-<div class="quote-rater" data-quote-rater>
+<div class="quote-rater">
   <div class="quote-rater__head">
-    <div>
-      <p class="eyebrow">Get a Quote</p>
-      <h2 class="quote-rater__title">Tell us a little about yourself</h2>
-    </div>
-    <span class="quote-rater__badge">Preview</span>
+    <p class="eyebrow">Get a Quote</p>
+    <h2 class="quote-rater__title">See your final expense insurance options</h2>
   </div>
 
-  <ol class="quote-rater__steps" aria-label="Quote steps">
-    <li class="is-active"><span>1</span> Basic Info</li>
-    <li><span>2</span> Coverage</li>
-    <li><span>3</span> Your Options</li>
-  </ol>
-
-  <!--
-    Integration point starts here. Replace this div's contents with the
-    Back Nine embed/widget/component when available.
-  -->
   <div class="quote-rater__surface">
-    <form class="quote-rater__form" aria-describedby="quote-rater-disclaimer">
-      <div class="quote-rater__row">
-        <label class="quote-rater__field">
-          <span>ZIP code</span>
-          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="e.g. 32901" name="zip" autocomplete="postal-code" />
-        </label>
-        <label class="quote-rater__field">
-          <span>Date of birth</span>
-          <input type="text" placeholder="MM/DD/YYYY" name="dob" autocomplete="bday" />
-        </label>
-      </div>
-
-      <div class="quote-rater__row">
-        <label class="quote-rater__field">
-          <span>Gender</span>
-          <select name="gender">
-            <option value="" selected>Select...</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-          </select>
-        </label>
-        <label class="quote-rater__field">
-          <span>Tobacco use</span>
-          <select name="tobacco">
-            <option value="" selected>Select...</option>
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-          </select>
-        </label>
-      </div>
-
-      <label class="quote-rater__field">
-        <span>Desired coverage amount</span>
-        <select name="coverage">
-          <option value="" selected>Select...</option>
-          <option value="5000">$5,000</option>
-          <option value="10000">$10,000</option>
-          <option value="15000">$15,000</option>
-          <option value="20000">$20,000</option>
-          <option value="25000">$25,000</option>
-        </select>
-      </label>
-
-      <button type="submit" class="quote-rater__submit" disabled aria-disabled="true">
-        See My Options
-      </button>
-    </form>
+    <BackNineWidget containerId={containerId} />
   </div>
-  <!-- Integration point ends here. -->
 
   {
     variant === "full" && (
@@ -126,34 +41,11 @@ const { variant = "full" } = Astro.props;
     )
   }
 
-  <p class="quote-rater__disclaimer text-subtle" id="quote-rater-disclaimer">
-    This is a preview of the quote experience. The live quote rater — powered
-    by Back Nine Insurance — is being connected and will be available here
-    soon. Coverage available for eligible applicants; quotes are estimates
-    and not a guarantee of coverage, rate, or approval.
+  <p class="quote-rater__disclaimer text-subtle">
+    Coverage available for eligible applicants. Quotes are estimates and not
+    a guarantee of coverage, rate, or approval.
   </p>
 </div>
-
-<script>
-  // Fire the "quote_started" conversion event the first time someone
-  // interacts with the quote form on this page — a real, working event
-  // even though the form itself isn't wired to a backend yet.
-  document.querySelectorAll<HTMLElement>("[data-quote-rater]").forEach((widget) => {
-    let started = false;
-    const form = widget.querySelector("form");
-    if (!form) return;
-
-    form.addEventListener(
-      "focusin",
-      () => {
-        if (started) return;
-        started = true;
-        (window as any).trackConversionEvent?.("quote_started");
-      },
-      { once: true }
-    );
-  });
-</script>
 
 <style>
   .quote-rater {
@@ -164,118 +56,13 @@ const { variant = "full" } = Astro.props;
     box-shadow: var(--shadow-lg);
   }
 
-  .quote-rater__head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-4);
-  }
-
   .quote-rater__title {
     margin-top: var(--space-2);
     font-size: var(--text-lg);
   }
 
-  .quote-rater__badge {
-    flex-shrink: 0;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-accent-700);
-    background: var(--color-accent-100);
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--radius-pill);
-    white-space: nowrap;
-  }
-
-  .quote-rater__steps {
-    display: flex;
-    gap: var(--space-6);
-    margin-top: var(--space-6);
-    padding-bottom: var(--space-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .quote-rater__steps li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--color-text-subtle);
-    font-weight: 500;
-  }
-
-  .quote-rater__steps li span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    border: 1.5px solid var(--color-line-strong);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-  }
-
-  .quote-rater__steps li.is-active {
-    color: var(--color-ink-900);
-  }
-
-  .quote-rater__steps li.is-active span {
-    border-color: var(--color-accent-500);
-    background: var(--color-accent-500);
-    color: var(--color-accent-ink);
-  }
-
   .quote-rater__surface {
     margin-top: var(--space-6);
-  }
-
-  .quote-rater__form {
-    display: grid;
-    gap: var(--space-4);
-  }
-
-  .quote-rater__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
-  }
-
-  .quote-rater__field {
-    display: grid;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-ink-800);
-  }
-
-  .quote-rater__field input,
-  .quote-rater__field select {
-    padding: 0.85rem 1rem;
-    border-radius: var(--radius-sm);
-    border: 1.5px solid var(--color-border);
-    background: var(--color-surface);
-    font-size: var(--text-base);
-    font-weight: 400;
-    color: var(--color-text);
-  }
-
-  .quote-rater__field input:focus-visible,
-  .quote-rater__field select:focus-visible {
-    border-color: var(--color-ink-800);
-  }
-
-  .quote-rater__submit {
-    margin-top: var(--space-2);
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-pill);
-    border: none;
-    background: var(--color-cta);
-    color: var(--color-cta-text);
-    font-weight: 700;
-    font-size: var(--text-base);
-    cursor: not-allowed;
-    opacity: 0.55;
   }
 
   .quote-rater__trust {
@@ -314,19 +101,6 @@ const { variant = "full" } = Astro.props;
   @media (max-width: 560px) {
     .quote-rater {
       padding: var(--space-5);
-    }
-
-    .quote-rater__row {
-      grid-template-columns: 1fr;
-    }
-
-    .quote-rater__steps {
-      gap: var(--space-4);
-    }
-
-    .quote-rater__steps li span {
-      width: 1.35rem;
-      height: 1.35rem;
     }
   }
 </style>

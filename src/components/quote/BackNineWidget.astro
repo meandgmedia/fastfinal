@@ -1,0 +1,70 @@
+---
+// =============================================================================
+// BACK NINE INSURANCE QUOTE WIDGET — LIVE EMBED
+// -----------------------------------------------------------------------------
+// This is the real Back Nine (Strife / QuoteAndApply) quote rater, replacing
+// the static preview that lived here through Phase 3–9. It's a single shared
+// component so the homepage hero and /get-a-quote/ both stay in sync off one
+// embed rather than two copies of the same script tag.
+//
+// KNOWN LIMITATIONS / THINGS TO VERIFY ONCE LIVE:
+//   - Back Nine hasn't given us a documented JS event API, so there's no
+//     formal hook yet for the `quote_completed` / `application_started` /
+//     `application_completed` conversion events defined in
+//     src/lib/analytics.ts. If Back Nine later documents custom events,
+//     a postMessage handshake, or a callback, wire it in below.
+//   - `quote_started` fires best-effort on the first click/focus anywhere
+//     inside the widget container. This only works if the widget renders
+//     directly into the page's DOM. If it turns out to inject a
+//     cross-origin <iframe> instead, click/focus events won't bubble out
+//     to the parent page and this won't fire — check in DevTools once
+//     deployed and switch to postMessage-based tracking if so.
+//   - `min-height` below is a rough guess to reduce layout shift while the
+//     widget's script loads. Adjust it once you can see the widget's real
+//     rendered height (this couldn't be verified in the build sandbox,
+//     since it has no network access to cdn.quoteandapply.io).
+//   - This container ID must stay unique per page. Since this component is
+//     only ever rendered once per page load (homepage hero OR the quote
+//     page, never both), the default is safe as-is.
+// =============================================================================
+
+interface Props {
+  containerId?: string;
+}
+
+const { containerId = "container-id" } = Astro.props;
+---
+
+<div class="backnine-widget">
+  <div id={containerId}></div>
+  <script
+    is:inline
+    id="strife"
+    src="https://cdn.quoteandapply.io/widget.js"
+    data-strife-key="4Aa0Ad1Np-TT7xVC"
+    data-strife-container-id={containerId}
+  ></script>
+</div>
+
+<script is:inline define:vars={{ containerId }}>
+  (function () {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var started = false;
+    function fireQuoteStarted() {
+      if (started) return;
+      started = true;
+      if (window.trackConversionEvent) {
+        window.trackConversionEvent("quote_started");
+      }
+    }
+    container.addEventListener("click", fireQuoteStarted, { once: true });
+    container.addEventListener("focusin", fireQuoteStarted, { once: true });
+  })();
+</script>
+
+<style>
+  .backnine-widget {
+    min-height: 420px;
+  }
+</style>

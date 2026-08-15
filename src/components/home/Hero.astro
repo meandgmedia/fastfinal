@@ -1,8 +1,8 @@
 ---
 import Container from "../ui/Container.astro";
 import Button from "../ui/Button.astro";
-import Card from "../ui/Card.astro";
 import RouteLine from "../ui/RouteLine.astro";
+import QuoteRater from "../quote/QuoteRater.astro";
 import { SITE, CTA as CTA_COPY } from "../../data/site";
 ---
 
@@ -32,41 +32,9 @@ import { SITE, CTA as CTA_COPY } from "../../data/site";
         </ul>
       </div>
 
-      <Card padding="lg" class="hero__quote-card" as="div">
-        <div class="hero__quote-card-head">
-          <p class="eyebrow">Get a Quote</p>
-          <span class="hero__quote-badge">~2 minutes</span>
-        </div>
-        <h3>See your final expense options</h3>
-        <p class="text-muted">
-          Answer a few quick questions to see the coverage you may be
-          eligible for.
-        </p>
-
-        <!--
-          QUOTE RATER / APPLICATION WIDGET WILL BE INSTALLED HERE.
-          See src/components/quote/QuoteRater.astro (Phase 3) for the
-          dedicated, documented integration point for the Back Nine
-          Insurance quote rater. This hero card intentionally mirrors
-          that component's visual language so the homepage and the
-          /get-a-quote/ page feel like one continuous product.
-        -->
-        <div class="hero__quote-preview" aria-hidden="true">
-          <div class="hero__quote-row">
-            <span>Coverage amount</span>
-            <span class="text-mono">$10,000</span>
-          </div>
-          <div class="hero__quote-row">
-            <span>Estimated monthly premium</span>
-            <span class="text-mono">$—.—</span>
-          </div>
-          <div class="hero__quote-bar"><span></span></div>
-        </div>
-
-        <Button href={CTA_COPY.quoteHref} variant="primary" size="md" trackEvent="quote_cta_click" class="hero__quote-cta">
-          {CTA_COPY.primaryShort}
-        </Button>
-      </Card>
+      <div class="hero__quote-slot">
+        <QuoteRater variant="compact" containerId="hero-quote-widget" />
+      </div>
     </div>
 
     <div class="hero__route">
@@ -128,66 +96,8 @@ import { SITE, CTA as CTA_COPY } from "../../data/site";
     background: var(--color-accent-500);
   }
 
-  .hero__quote-card {
-    box-shadow: var(--shadow-lg);
-  }
-
-  .hero__quote-card-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .hero__quote-badge {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-moss-700);
-    background: var(--color-moss-100);
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-pill);
-  }
-
-  .hero__quote-card h3 {
-    margin-top: var(--space-3);
-  }
-
-  .hero__quote-card p.text-muted {
-    margin-top: var(--space-2);
-  }
-
-  .hero__quote-preview {
-    margin-top: var(--space-6);
-    padding: var(--space-5);
-    background: var(--color-surface-alt);
-    border-radius: var(--radius-sm);
-    display: grid;
-    gap: var(--space-3);
-  }
-
-  .hero__quote-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .hero__quote-bar {
-    height: 8px;
-    border-radius: var(--radius-pill);
-    background: var(--color-line);
-    overflow: hidden;
-  }
-
-  .hero__quote-bar span {
-    display: block;
-    width: 45%;
-    height: 100%;
-    background: var(--color-accent-500);
-  }
-
-  .hero__quote-cta {
-    margin-top: var(--space-6);
-    width: 100%;
+  .hero__quote-slot {
+    min-width: 0;
   }
 
   .hero__route {

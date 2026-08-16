@@ -123,16 +123,18 @@ function isActive(href: string) {
 
   .header__nav-list {
     display: flex;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 
   .header__nav-list a {
+    display: inline-block;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--color-ink-700);
     padding-block: var(--space-2);
     border-bottom: 2px solid transparent;
+    white-space: nowrap;
   }
 
   .header__nav-list a:hover {
@@ -258,7 +260,13 @@ function isActive(href: string) {
     font-weight: 500;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1400px) {
+    .header__phone {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1280px) {
     .header__nav {
       display: none;
     }
@@ -272,17 +280,13 @@ function isActive(href: string) {
     }
   }
 
-  @media (min-width: 1025px) {
+  @media (min-width: 1281px) {
     .mobile-nav {
       display: none !important;
     }
   }
 
   @media (max-width: 480px) {
-    .header__phone {
-      display: none;
-    }
-
     .header__logo {
       height: 2.75rem;
     }

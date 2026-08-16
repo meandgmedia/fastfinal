@@ -38,39 +38,37 @@ const schema = [
 <BaseLayout title={title} description={description} path={path} schema={schema} hideStickyCta appendBrand={false}>
   <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Get a Quote", path }]} />
 
-  <Section tone="paper">
-    <div class="quote-page">
-      <div class="quote-page__intro">
-        <p class="eyebrow">Final Expense Insurance in {SERVICE_AREA.stateName}</p>
-        <h1>Get Your Florida Final Expense Insurance Quote</h1>
-        <p class="lede">
-          Compare your options and find coverage that fits your needs.
-          Answer a few quick questions to see what may be available to you —
-          there's no obligation to apply.
-        </p>
-        <p class="quote-page__area-note">
-          {SERVICE_AREA.shortDisclosure}
-        </p>
+  <Section tone="paper" centered>
+    <div class="quote-page__intro">
+      <p class="eyebrow">Final Expense Insurance in {SERVICE_AREA.stateName}</p>
+      <h1>Get Your Florida Final Expense Insurance Quote</h1>
+      <p class="lede">
+        Compare your options and find coverage that fits your needs.
+        Answer a few quick questions to see what may be available to you —
+        there's no obligation to apply.
+      </p>
+      <p class="quote-page__area-note">
+        {SERVICE_AREA.shortDisclosure}
+      </p>
 
-        <div class="quote-page__route">
-          <RouteLine activeStep={1} compact />
-        </div>
-
-        <div class="quote-page__alt">
-          <h2 class="quote-page__alt-heading">Prefer to talk it through?</h2>
-          <p class="text-muted">
-            You can also reach us directly and we'll help you compare
-            options over the phone.
-          </p>
-          <a class="quote-page__phone" href={`tel:${SITE.phone.tel}`} data-track-event="phone_click">
-            Call {SITE.phone.display}
-          </a>
-        </div>
+      <div class="quote-page__route">
+        <RouteLine activeStep={1} compact />
       </div>
+    </div>
 
-      <div class="quote-page__widget">
-        <QuoteRater />
-      </div>
+    <div class="quote-page__widget">
+      <QuoteRater />
+    </div>
+
+    <div class="quote-page__alt">
+      <h2 class="quote-page__alt-heading">Prefer to talk it through?</h2>
+      <p class="text-muted">
+        You can also reach us directly and we'll help you compare
+        options over the phone.
+      </p>
+      <a class="quote-page__phone" href={`tel:${SITE.phone.tel}`} data-track-event="phone_click">
+        Call {SITE.phone.display}
+      </a>
     </div>
   </Section>
 
@@ -80,11 +78,10 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .quote-page {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: var(--space-9);
-    align-items: start;
+  .quote-page__intro {
+    max-width: 42rem;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .quote-page__intro h1 {
@@ -93,6 +90,7 @@ const schema = [
 
   .quote-page__intro .lede {
     margin-top: var(--space-5);
+    margin-inline: auto;
   }
 
   .quote-page__area-note {
@@ -106,10 +104,17 @@ const schema = [
     margin-top: var(--space-8);
   }
 
+  .quote-page__widget {
+    max-width: 46rem;
+    margin: var(--space-9) auto 0;
+  }
+
   .quote-page__alt {
-    margin-top: var(--space-9);
+    max-width: 32rem;
+    margin: var(--space-9) auto 0;
     padding-top: var(--space-7);
     border-top: 1px solid var(--color-border);
+    text-align: center;
   }
 
   .quote-page__alt-heading {
@@ -125,15 +130,5 @@ const schema = [
     color: var(--color-ink-900);
     text-decoration: none;
     border-bottom: 2px solid var(--color-accent-500);
-  }
-
-  @media (max-width: 900px) {
-    .quote-page {
-      grid-template-columns: 1fr;
-    }
-
-    .quote-page__widget {
-      order: -1;
-    }
   }
 </style>

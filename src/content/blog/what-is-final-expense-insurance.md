@@ -10,7 +10,7 @@ If you've started researching how to cover funeral or burial costs, you've proba
 
 This guide walks through what final expense insurance actually is, what it's used for, how it works, and how to think about whether it's a fit for you.
 
-## What is final expense insurance?
+## What is Final Expense Insurance?
 
 Final expense insurance is a type of permanent (whole) life insurance designed specifically to help cover the costs that come up at the end of life — most commonly funeral and burial expenses. Instead of the large, six-figure coverage amounts associated with traditional life insurance, final expense policies are typically sized in the thousands of dollars, often somewhere between $5,000 and $25,000, though exact amounts vary by carrier and product.
 
@@ -18,7 +18,7 @@ Because the coverage amount is smaller, final expense insurance tends to be more
 
 You'll sometimes see this same type of coverage called "burial insurance" or "funeral insurance." In practice, these terms are usually describing the same basic product: a small, permanent life insurance policy intended to ease the financial burden on the people left behind.
 
-## What does final expense insurance pay for?
+## What Does Final Expense Insurance Pay For?
 
 The death benefit from a final expense policy is paid directly to your named beneficiary — not to a funeral home or any specific vendor. That means your beneficiary has flexibility in how the money gets used. Common uses include:
 
@@ -32,7 +32,7 @@ The death benefit from a final expense policy is paid directly to your named ben
 
 Because the payout isn't restricted to a specific purpose, some people also think of final expense insurance as a general-purpose safety net for whatever comes up right after a death in the family — not just the funeral itself.
 
-## Who typically buys final expense insurance?
+## Who Typically Buys Final Expense Insurance?
 
 Final expense insurance tends to appeal to a few overlapping groups of people:
 
@@ -46,7 +46,7 @@ Final expense insurance tends to appeal to a few overlapping groups of people:
 
 There's no single "right" profile for who should buy final expense insurance — it comes down to whether you want a dedicated, relatively low-cost way to make sure funeral and related costs are covered.
 
-## How does final expense insurance work?
+## How Does Final Expense Insurance Work?
 
 Final expense insurance is typically sold as one of two main types, based on how much underwriting is involved:
 
@@ -88,7 +88,7 @@ When you apply for a final expense policy, you'll name one or more beneficiaries
 
 Because the payout goes directly to your beneficiary rather than to a funeral home, they have control over how the money is spent — whether that's paying a funeral director directly, covering other bills, or a combination of both.
 
-## Final expense insurance vs. burial insurance: what's the difference?
+## Final Expense Insurance vs. Burial Insurance: What's the Difference?
 
 In practice, very little. "Final expense insurance" and "burial insurance" are largely used interchangeably in the industry to describe the same type of product: a small, permanent life insurance policy aimed at covering end-of-life costs. You may see one term used more than the other depending on the carrier or the marketing, but the underlying coverage is generally the same. If you want to go deeper on this specific comparison, see our [burial insurance](/burial-insurance/) page.
 

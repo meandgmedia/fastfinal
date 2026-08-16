@@ -10,7 +10,7 @@ One of the first questions most people ask about final expense insurance is simp
 
 This article breaks down what actually drives the price of a final expense policy, walks through example coverage amounts, and explains why two people can get very different quotes for what looks like the same coverage.
 
-## What determines the price of final expense insurance?
+## What Determines the Price of Final Expense Insurance?
 
 Final expense insurance pricing comes down to a combination of who you are, what you're buying, and which type of policy you choose. Here's how each factor plays in.
 

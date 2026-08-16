@@ -14,16 +14,13 @@ function isActive(href: string) {
 <header class="header" data-header>
   <Container width="wide" class="header__inner">
     <a href="/" class="header__brand" aria-label={`${SITE.name} — Home`}>
-      <svg class="header__mark" viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="14" fill="var(--color-ink-900)"></rect>
-        <path d="M32 10 L50 17 V30 C50 42 42.5 50.5 32 55 C21.5 50.5 14 42 14 30 V17 Z" fill="var(--color-paper-050)"></path>
-        <path d="M32 15 L45 20.3 V30 C45 39.3 39.3 46 32 49.6 C24.7 46 19 39.3 19 30 V20.3 Z" fill="var(--color-ink-900)"></path>
-        <path d="M23 31.5 L29 37.5 L41.5 24" fill="none" stroke="var(--color-accent-500)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-      <span class="header__brand-text">
-        <span class="header__brand-name">Florida Final Expense</span>
-        <span class="header__brand-sub">Insurance</span>
-      </span>
+      <img
+        src="/brand/logo-lockup.png"
+        alt=""
+        class="header__logo"
+        width="1520"
+        height="520"
+      />
     </a>
 
     <nav class="header__nav" aria-label="Primary">
@@ -106,36 +103,16 @@ function isActive(href: string) {
   .header__brand {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
     text-decoration: none;
     color: var(--color-ink-900);
     flex-shrink: 0;
   }
 
-  .header__mark {
-    width: 2.25rem;
-    height: 2.25rem;
+  .header__logo {
+    display: block;
+    height: 2.5rem;
+    width: auto;
     flex-shrink: 0;
-  }
-
-  .header__brand-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-    font-family: var(--font-display);
-  }
-
-  .header__brand-name {
-    font-weight: 600;
-    font-size: 1.05rem;
-  }
-
-  .header__brand-sub {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-    font-family: var(--font-mono);
   }
 
   .header__nav {
@@ -306,8 +283,8 @@ function isActive(href: string) {
       display: none;
     }
 
-    .header__brand-sub {
-      display: none;
+    .header__logo {
+      height: 2rem;
     }
   }
 </style>

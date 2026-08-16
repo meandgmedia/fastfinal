@@ -9,9 +9,8 @@ const year = new Date().getFullYear();
   <Container width="wide">
     <div class="footer__top">
       <div class="footer__brand">
-        <a href="/" class="footer__brand-link">
-          <img src="/brand/mark.png" alt="" class="footer__mark" width="512" height="512" />
-          <span>{SITE.name}</span>
+        <a href="/" class="footer__brand-link" aria-label={`${SITE.name} — Home`}>
+          <img src="/brand/logo-lockup.png" alt="" class="footer__logo" width="1253" height="278" />
         </a>
         <p class="footer__desc">
           Compare final expense insurance options online and apply at your own pace — quote, compare, apply, get covered.
@@ -58,7 +57,7 @@ const year = new Date().getFullYear();
         third-party insurance carriers, not by {SITE.shortName}. Final approval and any offer of
         coverage are subject to the underwriting guidelines of the issuing carrier.
       </p>
-      <p class="text-on-dark-subtle">
+      <p class="text-subtle">
         © {year} {SITE.name}. All rights reserved. <span class="footer__domain">{SITE.domain}</span>
       </p>
     </div>
@@ -67,8 +66,9 @@ const year = new Date().getFullYear();
 
 <style>
   .footer {
-    background: var(--color-ink-900);
-    color: var(--color-text-on-dark-muted);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
     padding-block: var(--space-9) var(--space-7);
   }
 
@@ -79,38 +79,33 @@ const year = new Date().getFullYear();
   }
 
   .footer__brand-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    text-decoration: none;
-    color: var(--color-text-on-dark);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.1rem;
+    display: inline-block;
   }
 
-  .footer__mark {
-    width: 2rem;
-    height: 2rem;
+  .footer__logo {
+    display: block;
+    height: 2.75rem;
+    width: auto;
   }
 
   .footer__desc {
-    margin-top: var(--space-4);
+    margin-top: var(--space-5);
     max-width: 26rem;
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
   }
 
   .footer__cta-link {
     display: inline-block;
     margin-top: var(--space-5);
-    color: var(--color-accent-500);
+    color: var(--color-accent-700);
     font-weight: 600;
     text-decoration: none;
   }
 
   .footer__cta-link:hover {
-    color: var(--color-accent-300);
+    color: var(--color-accent-600);
   }
 
   .footer__heading {
@@ -118,7 +113,7 @@ const year = new Date().getFullYear();
     font-size: var(--text-xs);
     letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
-    color: var(--color-ink-200);
+    color: var(--color-text-subtle);
     margin-bottom: var(--space-4);
     font-weight: 600;
   }
@@ -136,18 +131,18 @@ const year = new Date().getFullYear();
     display: inline-block;
     padding-block: var(--space-1);
     text-decoration: none;
-    color: var(--color-text-on-dark-muted);
+    color: var(--color-text-muted);
     font-size: var(--text-sm);
   }
 
   .footer__nav a:hover,
   .footer__contact a:hover,
   .footer__legal a:hover {
-    color: var(--color-text-on-dark);
+    color: var(--color-ink-900);
   }
 
   .footer__divider {
-    border-top-color: var(--color-ink-700);
+    border-top-color: var(--color-border);
     margin-block: var(--space-8);
   }
 
@@ -157,10 +152,11 @@ const year = new Date().getFullYear();
     font-size: var(--text-xs);
     line-height: var(--leading-relaxed);
     max-width: 68rem;
+    color: var(--color-text-muted);
   }
 
   .footer__disclaimer strong {
-    color: var(--color-ink-200);
+    color: var(--color-ink-900);
     font-weight: 600;
   }
 

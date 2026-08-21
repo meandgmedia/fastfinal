@@ -4,15 +4,19 @@ interface Props {
   href?: string;
   padding?: "md" | "lg";
   class?: string;
+  /** Set to "_blank" for external links that should open in a new tab. rel="noopener noreferrer" is applied automatically. */
+  target?: "_blank" | "_self";
 }
 
-const { as = "div", href, padding = "md", class: className = "" } = Astro.props;
+const { as = "div", href, padding = "md", class: className = "", target } = Astro.props;
 const Tag = href ? "a" : as;
 ---
 
 <Tag
   class:list={["card", `card--pad-${padding}`, { "card--link": Boolean(href) }, className]}
   href={href}
+  target={target}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
 >
   <slot />
 </Tag>

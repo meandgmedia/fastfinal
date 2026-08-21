@@ -13,9 +13,11 @@ import { SITE, CTA as CTA_COPY } from "../data/site";
 import { webPageSchema, faqSchema } from "../lib/schema";
 import { HOMEPAGE_FAQS } from "../data/faq";
 
+const pageTitle = "As Low As $9/mo - Florida Final Expense Insurance";
+
 const schema = [
   webPageSchema({
-    title: SITE.name,
+    title: pageTitle,
     description: SITE.description,
     path: "/",
   }),
@@ -23,7 +25,7 @@ const schema = [
 ];
 ---
 
-<BaseLayout title={SITE.name} description={SITE.description} schema={schema}>
+<BaseLayout title={pageTitle} description={SITE.description} schema={schema}>
   <Hero />
   <HowItWorks />
   <WhatIsFinalExpense />

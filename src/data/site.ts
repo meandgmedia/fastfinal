@@ -7,19 +7,17 @@
 export const SITE = {
   name: "Florida Final Expense Insurance",
   shortName: "Florida Final Expense",
-  domain: "fastfinalexpenseinsurance.com",
-  url: "https://fastfinalexpenseinsurance.com",
+  domain: "floridafinalexpense.com",
+  url: "https://floridafinalexpense.com",
   tagline: "Florida Final Expense Insurance, Made Fast & Simple",
   description:
     "Get your Florida final expense insurance quote in minutes. Compare options, apply online, and get covered quickly — for eligible Florida residents.",
   locale: "en_US",
-  // TODO: Replace with the real support/sales phone number once available.
   phone: {
-    display: "(000) 000-0000",
-    tel: "+10000000000",
+    display: "772-226-0875",
+    tel: "+17722260875",
   },
-  // TODO: Replace with the real contact inbox once available.
-  email: "hello@fastfinalexpenseinsurance.com",
+  email: "hello@floridafinalexpense.com",
 } as const;
 
 // Licensed/service area. Referenced by compliance messaging across the site
@@ -31,6 +29,19 @@ export const SERVICE_AREA = {
   stateAbbr: "FL",
   shortDisclosure: "Currently licensed to offer coverage in Florida only.",
 } as const;
+
+// The licensed producer behind this site. Referenced by the footer
+// disclaimer, About page, and Insurance Disclosures page so licensing
+// info only needs to be updated in one place.
+export const LICENSED_AGENT = {
+  name: "Matt Saffian",
+  licenseLabel: "Florida Resident License #G273626",
+} as const;
+
+// Sister site offering full life insurance options (whole, term, etc.)
+// beyond the final expense / burial focus of this site. Referenced on the
+// Senior Life Insurance page.
+export const FULL_LIFE_INSURANCE_URL = "https://florida-life-insurance.com";
 
 export type NavLink = {
   label: string;

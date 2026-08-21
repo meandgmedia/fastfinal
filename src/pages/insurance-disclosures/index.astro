@@ -1,16 +1,15 @@
 ---
 import LegalPlaceholder from "../../components/marketing/LegalPlaceholder.astro";
-import { SERVICE_AREA } from "../../data/site";
+import { SERVICE_AREA, LICENSED_AGENT } from "../../data/site";
 ---
 
 <LegalPlaceholder
   title="Insurance Disclosures"
   description="Licensing, carrier, and other required insurance disclosures for Florida Final Expense Insurance. Full disclosures coming soon."
   path="/insurance-disclosures/"
-  intro={`As a marketing platform for insurance products, we're required to disclose certain licensing and carrier information. We're currently licensed to offer coverage in ${SERVICE_AREA.stateName} only. Full disclosures are being finalized and will be published here.`}
+  intro={`As a marketing platform for insurance products, we're required to disclose certain licensing and carrier information. Insurance products presented on this site are offered by licensed insurance agent ${LICENSED_AGENT.name}, ${LICENSED_AGENT.licenseLabel}, currently licensed to offer coverage in ${SERVICE_AREA.stateName} only. Additional carrier-level disclosures are being finalized and will be published here.`}
   whatWillBeCovered={[
-    "Our legal business name and insurance license number(s)",
-    `Confirmation of our ${SERVICE_AREA.stateName}-only licensed service area`,
+    `Full ${SERVICE_AREA.stateName} insurance producer licensing details`,
     "The carriers whose products may be presented through this site",
     "How quotes are generated and their relationship to final, underwritten offers",
     `Required ${SERVICE_AREA.stateName}-specific insurance disclosures`,

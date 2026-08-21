@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   // Used to generate absolute canonical URLs, sitemap entries, and RSS links.
-  site: "https://fastfinalexpenseinsurance.com",
+  site: "https://floridafinalexpense.com",
   trailingSlash: "always",
   compressHTML: true,
   integrations: [

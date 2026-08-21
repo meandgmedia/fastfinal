@@ -1,6 +1,6 @@
-# https://fastfinalexpenseinsurance.com/robots.txt
+# https://floridafinalexpense.com/robots.txt
 
 User-agent: *
 Allow: /
 
-Sitemap: https://fastfinalexpenseinsurance.com/sitemap-index.xml
+Sitemap: https://floridafinalexpense.com/sitemap-index.xml

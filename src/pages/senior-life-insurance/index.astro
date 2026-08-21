@@ -6,7 +6,8 @@ import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
 import RelatedCoverage from "../../components/home/RelatedCoverage.astro";
 import FAQAccordion from "../../components/faq/FAQAccordion.astro";
 import CTA from "../../components/ui/CTA.astro";
-import { CTA as CTA_COPY, SERVICE_AREA } from "../../data/site";
+import Button from "../../components/ui/Button.astro";
+import { CTA as CTA_COPY, SERVICE_AREA, FULL_LIFE_INSURANCE_URL } from "../../data/site";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
 import { SENIOR_LIFE_PAGE_FAQS } from "../../data/faq";
 
@@ -29,12 +30,14 @@ const policyTypes = [
   {
     title: "Whole Life Insurance",
     description: "Permanent coverage designed to last a lifetime, often with larger coverage amounts and underwriting requirements.",
-    href: "/get-a-quote/",
+    href: FULL_LIFE_INSURANCE_URL,
+    target: "_blank" as const,
   },
   {
     title: "Term Life Insurance",
     description: "Coverage for a set period, such as 10 or 20 years — often less expensive up front but doesn't last for life.",
-    href: "/get-a-quote/",
+    href: FULL_LIFE_INSURANCE_URL,
+    target: "_blank" as const,
   },
 ];
 
@@ -87,6 +90,18 @@ const schema = [
     items={policyTypes}
   />
 
+  <Section tone="ink" centered class="life-cta">
+    <p class="eyebrow">Beyond Final Expense</p>
+    <h2 class="life-cta__heading">Looking for full life insurance coverage?</h2>
+    <p class="lede life-cta__sub">
+      We specialize in final expense insurance. For whole life, term life,
+      and other broader life insurance options, our sister site can help.
+    </p>
+    <Button href={FULL_LIFE_INSURANCE_URL} variant="dark" size="lg" target="_blank">
+      Explore Full Life Insurance Options ↗
+    </Button>
+  </Section>
+
   <FeatureGrid
     tone="surface"
     eyebrow="How to Choose"
@@ -124,5 +139,26 @@ const schema = [
     max-width: none;
     color: var(--color-text-muted);
     line-height: var(--leading-relaxed);
+  }
+
+  .life-cta :global(.container) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .life-cta__heading {
+    margin-top: var(--space-3);
+    max-width: 34rem;
+  }
+
+  .life-cta__sub {
+    margin-top: var(--space-4);
+    max-width: 34rem;
+  }
+
+  .life-cta :global(.btn) {
+    margin-top: var(--space-7);
   }
 </style>

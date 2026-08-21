@@ -1,6 +1,6 @@
 ---
 import Container from "../ui/Container.astro";
-import { SITE, SERVICE_AREA, FOOTER_NAV, FOOTER_LEGAL, CTA as CTA_COPY } from "../../data/site";
+import { SITE, SERVICE_AREA, LICENSED_AGENT, FOOTER_NAV, FOOTER_LEGAL, CTA as CTA_COPY } from "../../data/site";
 
 const year = new Date().getFullYear();
 ---
@@ -48,14 +48,14 @@ const year = new Date().getFullYear();
 
     <div class="footer__disclaimer">
       <p>
-        {/* TODO: Insert real legal business name and license number(s) once available. */}
         {SITE.name} is a marketing website for final expense insurance products.
-        <strong> [Legal business name — placeholder]</strong> is a licensed insurance agency
-        <strong> [license number(s) — placeholder]</strong>, currently licensed to offer coverage in
-        {" "}{SERVICE_AREA.stateName} only. Not all applicants will qualify for coverage. Quotes are
-        estimates and are not a guarantee of coverage, rate, or approval. Coverage is issued by
-        third-party insurance carriers, not by {SITE.shortName}. Final approval and any offer of
-        coverage are subject to the underwriting guidelines of the issuing carrier.
+        Insurance products presented on this site are offered by licensed insurance agent
+        <strong> {LICENSED_AGENT.name}</strong>, <strong>{LICENSED_AGENT.licenseLabel}</strong>,
+        currently licensed to offer coverage in {SERVICE_AREA.stateName} only. Not all applicants
+        will qualify for coverage. Quotes are estimates and are not a guarantee of coverage, rate,
+        or approval. Coverage is issued by third-party insurance carriers, not by {SITE.shortName}.
+        Final approval and any offer of coverage are subject to the underwriting guidelines of the
+        issuing carrier.
       </p>
       <p class="text-subtle">
         © {year} {SITE.name}. All rights reserved. <span class="footer__domain">{SITE.domain}</span>

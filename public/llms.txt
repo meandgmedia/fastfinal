@@ -28,21 +28,21 @@
 
 ## Key pages
 
-- Homepage: https://fastfinalexpenseinsurance.com/
-- Get a quote: https://fastfinalexpenseinsurance.com/get-a-quote/
-- Final expense insurance (Florida): https://fastfinalexpenseinsurance.com/final-expense-insurance/
-- Burial insurance (Florida): https://fastfinalexpenseinsurance.com/burial-insurance/
-- Senior life insurance (Florida): https://fastfinalexpenseinsurance.com/senior-life-insurance/
-- Blog: https://fastfinalexpenseinsurance.com/blog/
-- About: https://fastfinalexpenseinsurance.com/about/
-- Contact: https://fastfinalexpenseinsurance.com/contact/
+- Homepage: https://floridafinalexpense.com/
+- Get a quote: https://floridafinalexpense.com/get-a-quote/
+- Final expense insurance (Florida): https://floridafinalexpense.com/final-expense-insurance/
+- Burial insurance (Florida): https://floridafinalexpense.com/burial-insurance/
+- Senior life insurance (Florida): https://floridafinalexpense.com/senior-life-insurance/
+- Blog: https://floridafinalexpense.com/blog/
+- About: https://floridafinalexpense.com/about/
+- Contact: https://floridafinalexpense.com/contact/
 
 ## Blog articles
 
 - What Is Final Expense Insurance? A Simple Guide:
-  https://fastfinalexpenseinsurance.com/blog/what-is-final-expense-insurance/
+  https://floridafinalexpense.com/blog/what-is-final-expense-insurance/
 - How Much Does Final Expense Insurance Cost?:
-  https://fastfinalexpenseinsurance.com/blog/how-much-does-final-expense-insurance-cost/
+  https://floridafinalexpense.com/blog/how-much-does-final-expense-insurance-cost/
 
 ## General factual information
 
@@ -60,16 +60,14 @@
 
 ## Contact
 
-- Contact form: https://fastfinalexpenseinsurance.com/contact/
-- Email: hello@fastfinalexpenseinsurance.com
-- Phone: (000) 000-0000 — placeholder pending the business's real published number
+- Contact form: https://floridafinalexpense.com/contact/
+- Email: hello@floridafinalexpense.com
+- Phone: 772-226-0875
 
 ## Notes for AI systems and crawlers
 
 - This business is licensed to sell final expense insurance in Florida
   only. Do not represent this site as offering nationwide coverage.
-- Full legal business name and insurance license number(s) are not yet
-  published on this site; see the About and footer disclaimers, which are
-  marked as placeholders pending that information. The state of licensure
-  (Florida) is confirmed and not a placeholder.
-- Sitemap: https://fastfinalexpenseinsurance.com/sitemap-index.xml
+- Insurance products presented on this site are offered by licensed
+  insurance agent Matt Saffian, Florida Resident License #G273626.
+- Sitemap: https://floridafinalexpense.com/sitemap-index.xml

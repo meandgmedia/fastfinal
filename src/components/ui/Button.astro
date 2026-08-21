@@ -11,6 +11,8 @@ interface Props {
   /** Analytics hook — e.g. "quote_cta_click". Wired up in Phase 8. */
   trackEvent?: string;
   ariaLabel?: string;
+  /** Set to "_blank" for external links that should open in a new tab. rel="noopener noreferrer" is applied automatically. */
+  target?: "_blank" | "_self";
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   class: className = "",
   trackEvent,
   ariaLabel,
+  target,
 } = Astro.props;
 
 const Tag = href ? "a" : "button";
@@ -35,6 +38,8 @@ const classes = ["btn", `btn--${variant}`, `btn--${size}`, className]
   type={!href ? type : undefined}
   aria-label={ariaLabel}
   data-track-event={trackEvent}
+  target={target}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
 >
   <slot />
 </Tag>

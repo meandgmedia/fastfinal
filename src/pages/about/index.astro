@@ -4,7 +4,7 @@ import PageHero from "../../components/marketing/PageHero.astro";
 import FeatureGrid from "../../components/marketing/FeatureGrid.astro";
 import Section from "../../components/ui/Section.astro";
 import CTA from "../../components/ui/CTA.astro";
-import { SITE, SERVICE_AREA, CTA as CTA_COPY } from "../../data/site";
+import { SITE, SERVICE_AREA, LICENSED_AGENT, CTA as CTA_COPY } from "../../data/site";
 import { webPageSchema, breadcrumbSchema } from "../../lib/schema";
 
 const title = "About Us";
@@ -84,18 +84,16 @@ const schema = [
     <div class="prose-block company-details">
       <h2>Company details</h2>
       <p class="text-muted">
-        We believe in being upfront about who we are. Our legal business
-        name and license number are still being finalized and will replace
-        the placeholders below once available.
+        We believe in being upfront about who we are.
       </p>
       <dl class="company-details__list">
         <div>
-          <dt>Legal business name</dt>
-          <dd>[Legal business name — placeholder]</dd>
+          <dt>Licensed agent</dt>
+          <dd>{LICENSED_AGENT.name}</dd>
         </div>
         <div>
-          <dt>Insurance license number(s)</dt>
-          <dd>[License number(s) — placeholder]</dd>
+          <dt>Insurance license</dt>
+          <dd>{LICENSED_AGENT.licenseLabel}</dd>
         </div>
         <div>
           <dt>States of licensure</dt>

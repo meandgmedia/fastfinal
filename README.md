@@ -2,7 +2,7 @@
 
 Marketing and lead-generation website for **Florida Final Expense Insurance** — get a quote, compare options, apply online. Currently licensed to offer coverage in Florida only (see `SERVICE_AREA` in `src/data/site.ts`). Built with [Astro](https://astro.build), deployed to Cloudflare Pages.
 
-Production: **https://fastfinalexpenseinsurance.com**
+Production: **https://floridafinalexpense.com**
 
 ## Tech stack
 

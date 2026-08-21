@@ -6,6 +6,8 @@ interface Item {
   title: string;
   description: string;
   href?: string;
+  /** Set to "_blank" for external links (e.g. a partner site) opening in a new tab. */
+  target?: "_blank" | "_self";
 }
 
 interface Props {
@@ -37,10 +39,10 @@ const {
           // Card always renders on its own white surface, regardless of the
           // section's tone — so its text must always use the dark/muted
           // palette, never the section's on-dark text color.
-          <Card as="li" href={item.href} padding="md" class="feature-grid__card">
+          <Card as="li" href={item.href} target={item.target} padding="md" class="feature-grid__card">
             <h3 class="feature-grid__title">{item.title}</h3>
             <p class="text-muted">{item.description}</p>
-            <span class="feature-grid__arrow" aria-hidden="true">→</span>
+            <span class="feature-grid__arrow" aria-hidden="true">{item.target === "_blank" ? "↗" : "→"}</span>
           </Card>
         ) : (
           <li class="feature-grid__item">

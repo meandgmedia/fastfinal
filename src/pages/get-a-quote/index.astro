@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import RouteLine from "../../components/ui/RouteLine.astro";
 import QuoteRater from "../../components/quote/QuoteRater.astro";
 import FAQAccordion from "../../components/faq/FAQAccordion.astro";
-import { SITE, SERVICE_AREA } from "../../data/site";
+import { SERVICE_AREA } from "../../data/site";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
 import { HOMEPAGE_FAQS } from "../../data/faq";
 
@@ -59,17 +59,6 @@ const schema = [
     <div class="quote-page__widget">
       <QuoteRater />
     </div>
-
-    <div class="quote-page__alt">
-      <h2 class="quote-page__alt-heading">Prefer to talk it through?</h2>
-      <p class="text-muted">
-        You can also reach us directly and we'll help you compare
-        options over the phone.
-      </p>
-      <a class="quote-page__phone" href={`tel:${SITE.phone.tel}`} data-track-event="phone_click">
-        Call {SITE.phone.display}
-      </a>
-    </div>
   </Section>
 
   <Section tone="surface" eyebrow="Questions" heading="Before you get started" width="narrow" centered>
@@ -107,28 +96,5 @@ const schema = [
   .quote-page__widget {
     max-width: 46rem;
     margin: var(--space-9) auto 0;
-  }
-
-  .quote-page__alt {
-    max-width: 32rem;
-    margin: var(--space-9) auto 0;
-    padding-top: var(--space-7);
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-  }
-
-  .quote-page__alt-heading {
-    font-size: var(--text-md);
-    margin-bottom: var(--space-2);
-  }
-
-  .quote-page__phone {
-    display: inline-block;
-    margin-top: var(--space-4);
-    font-family: var(--font-mono);
-    font-weight: 600;
-    color: var(--color-ink-900);
-    text-decoration: none;
-    border-bottom: 2px solid var(--color-accent-500);
   }
 </style>

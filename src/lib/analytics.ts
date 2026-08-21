@@ -1,14 +1,20 @@
 // =============================================================================
 // ANALYTICS CONFIGURATION
 // -----------------------------------------------------------------------------
-// This site ships with a complete analytics ARCHITECTURE but no live tracking
-// IDs — nothing fires, and no third-party script loads, until real IDs are
-// added as environment variables. That keeps the site fast and free of dead
-// network requests until analytics is actually turned on.
+// Google Analytics 4 is live, using the measurement ID below. GA4 measurement
+// IDs aren't secrets — they're public identifiers visible in every page's
+// source once the tag loads — so it's safe to commit directly rather than
+// requiring a separate Cloudflare Pages environment variable step.
 //
-// TO TURN ON GOOGLE ANALYTICS (GA4):
-//   Set PUBLIC_GA4_MEASUREMENT_ID as a Cloudflare Pages environment variable,
-//   e.g. G-XXXXXXXXXX. See https://support.google.com/analytics/answer/9539598
+// Google Ads conversion tracking, Meta Pixel, and Search Console verification
+// remain OFF until their IDs are set — nothing loads for those until then,
+// keeping the site fast and free of dead network requests.
+//
+// TO CHANGE THE GA4 PROPERTY:
+//   Either edit the default below, or set PUBLIC_GA4_MEASUREMENT_ID as a
+//   Cloudflare Pages environment variable to override it without a code
+//   change (e.g. for a staging property). See
+//   https://support.google.com/analytics/answer/9539598
 //
 // TO TURN ON GOOGLE ADS CONVERSION TRACKING:
 //   Set PUBLIC_GOOGLE_ADS_ID (e.g. AW-XXXXXXXXX). Once set, per-event
@@ -24,13 +30,13 @@
 //   set PUBLIC_GSC_VERIFICATION to the content value Search Console gives
 //   you — it will be rendered automatically (see SEO.astro).
 //
-// Copy .env.example to .env.local for local testing, or set these directly
-// in the Cloudflare Pages dashboard under Settings → Environment variables.
-// Never commit real values to the repository.
+// Copy .env.example to .env.local for local testing, or set overrides
+// directly in the Cloudflare Pages dashboard under Settings → Environment
+// variables.
 // =============================================================================
 
 export const ANALYTICS_IDS = {
-  ga4: import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined,
+  ga4: (import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined) ?? "G-7RHSY8TBE1",
   googleAds: import.meta.env.PUBLIC_GOOGLE_ADS_ID as string | undefined,
   metaPixel: import.meta.env.PUBLIC_META_PIXEL_ID as string | undefined,
   gscVerification: import.meta.env.PUBLIC_GSC_VERIFICATION as string | undefined,

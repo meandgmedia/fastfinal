@@ -43,6 +43,13 @@ export const LICENSED_AGENT = {
 // Senior Life Insurance page.
 export const FULL_LIFE_INSURANCE_URL = "https://florida-life-insurance.com";
 
+// Web3Forms access key powering the contact form (src/components/forms/ContactForm.astro).
+// Web3Forms access keys are designed to be used client-side — the form
+// submits directly from the browser with no backend of Florida Final
+// Expense's own, so this isn't a secret the way an API key would be. See
+// https://web3forms.com for how the key works.
+export const WEB3FORMS_ACCESS_KEY = "601cd7c9-15f7-4e95-890b-19aa85032c30";
+
 export type NavLink = {
   label: string;
   href: string;

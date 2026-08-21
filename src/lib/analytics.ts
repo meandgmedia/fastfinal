@@ -60,6 +60,8 @@ export const CONVERSION_EVENTS = {
   applicationCompleted: "application_completed",
   /** Any click on a phone number link, site-wide. */
   phoneClick: "phone_click",
+  /** Fires once, on a confirmed successful contact form submission (see ContactForm.astro). */
+  contactFormSubmitted: "contact_form_submitted",
 } as const;
 
 export type ConversionEventName =

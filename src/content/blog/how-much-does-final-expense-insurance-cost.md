@@ -5,9 +5,9 @@ publishDate: 2026-01-22
 author: "Florida Final Expense Insurance"
 category: "cost-pricing"
 heroImage:
-  url: "https://images.unsplash.com/photo-1721002309163-9daa008925a7?auto=format&fit=crop&w=1600&q=75"
-  alt: "Waves rolling onto a Florida shoreline at sunrise"
-  credit: "Leo Yan"
+  url: "https://images.unsplash.com/photo-1691464177778-f15d5864839d?auto=format&fit=crop&w=1600&q=75"
+  alt: "Palm trees on a Florida beach at sunset"
+  credit: "Albulena Panduri (Unsplash)"
 tags: ["final expense insurance", "cost", "pricing"]
 ---
 

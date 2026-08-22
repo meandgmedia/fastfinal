@@ -10,7 +10,7 @@ const { label = CTA_COPY.primary } = Astro.props;
 ---
 
 <div class="blog-cta" not-prose>
-  <Button href={CTA_COPY.quoteHref} variant="accent-solid" size="lg" trackEvent="quote_cta_click">
+  <Button href={CTA_COPY.quoteHref} variant="primary" size="lg" trackEvent="quote_cta_click">
     {label}
   </Button>
   <p class="blog-cta__note text-on-dark-subtle">Coverage available for eligible Florida residents.</p>

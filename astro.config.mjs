@@ -12,13 +12,15 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      // The 404 page and not-yet-published legal placeholder pages aren't
-      // real, indexable content yet — keep them out of the sitemap.
+      // The 404 page, not-yet-published legal placeholder pages, and
+      // paginated blog pages beyond page 1 (noindex'd to avoid thin/
+      // duplicate-content pagination pages) aren't meant to be indexed.
       filter: (page) =>
         !page.includes("/404") &&
         !page.includes("/privacy-policy/") &&
         !page.includes("/terms-of-use/") &&
-        !page.includes("/insurance-disclosures/"),
+        !page.includes("/insurance-disclosures/") &&
+        !/\/blog\/\d+\/$/.test(page),
     }),
   ],
 });

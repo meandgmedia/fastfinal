@@ -4,7 +4,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/marketing/PageHero.astro";
 import Section from "../../components/ui/Section.astro";
 import Card from "../../components/ui/Card.astro";
-import HeroArt from "../../components/blog/HeroArt.astro";
 import { CTA as CTA_COPY } from "../../data/site";
 import { BLOG_CATEGORIES } from "../../content.config";
 import { webPageSchema, breadcrumbSchema } from "../../lib/schema";
@@ -89,7 +88,7 @@ const schema = [
               data-search-text={`${post.data.title} ${post.data.description}`.toLowerCase()}
             >
               <div class="post-list__art">
-                <HeroArt variant={post.data.heroArt} />
+                <img src={post.data.heroImage.url} alt="" width="800" height="450" loading="lazy" />
               </div>
               <time datetime={post.data.publishDate.toISOString()} class="post-list__date text-mono text-subtle">
                 {dateFormatter.format(post.data.publishDate)}
@@ -187,6 +186,15 @@ const schema = [
 
   .post-list__art {
     margin: calc(var(--space-7) * -1) calc(var(--space-7) * -1) var(--space-5);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    overflow: hidden;
+  }
+
+  .post-list__art img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
   }
 
   .post-list__date {

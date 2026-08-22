@@ -4,6 +4,10 @@ description: "Learn what determines the cost of final expense insurance, with ex
 publishDate: 2026-01-22
 author: "Florida Final Expense Insurance"
 category: "cost-pricing"
+heroImage:
+  url: "https://images.unsplash.com/photo-1721002309163-9daa008925a7?auto=format&fit=crop&w=1600&q=75"
+  alt: "Waves rolling onto a Florida shoreline at sunrise"
+  credit: "Leo Yan"
 tags: ["final expense insurance", "cost", "pricing"]
 ---
 

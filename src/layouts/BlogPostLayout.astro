@@ -3,7 +3,6 @@ import BaseLayout from "./BaseLayout.astro";
 import Section from "../components/ui/Section.astro";
 import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import CTA from "../components/ui/CTA.astro";
-import HeroArt from "../components/blog/HeroArt.astro";
 import { SITE, CTA as CTA_COPY } from "../data/site";
 import { BLOG_CATEGORIES } from "../content.config";
 import { webPageSchema, breadcrumbSchema, articleSchema } from "../lib/schema";
@@ -16,10 +15,10 @@ interface Props {
   updatedDate?: Date;
   author: string;
   category: string;
-  heroArt: "waves" | "skyline" | "palms-sunset" | "palms-day";
+  heroImage: { url: string; alt: string; credit?: string };
 }
 
-const { title, description, slug, publishDate, updatedDate, author, category, heroArt } = Astro.props;
+const { title, description, slug, publishDate, updatedDate, author, category, heroImage } = Astro.props;
 const path = `/blog/${slug}/`;
 const categoryLabel = BLOG_CATEGORIES.find((c) => c.slug === category)?.label ?? category;
 
@@ -48,9 +47,10 @@ const schema = [
 
   <Section tone="paper">
     <article class="post">
-      <div class="post__hero-art">
-        <HeroArt variant={heroArt} />
-      </div>
+      <figure class="post__hero-art">
+        <img src={heroImage.url} alt={heroImage.alt} width="1600" height="900" loading="eager" />
+        {heroImage.credit && <figcaption class="post__hero-credit text-subtle">Photo: {heroImage.credit} / Unsplash</figcaption>}
+      </figure>
 
       <header class="post__header">
         <div class="post__eyebrow-row">
@@ -93,7 +93,22 @@ const schema = [
   }
 
   .post__hero-art {
-    margin-bottom: var(--space-7);
+    margin: 0 0 var(--space-7);
+  }
+
+  .post__hero-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  .post__hero-credit {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
   }
 
   .post__eyebrow-row {

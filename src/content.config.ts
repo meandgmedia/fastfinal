@@ -17,10 +17,15 @@ const categorySlug = z.enum(
   BLOG_CATEGORIES.map((c) => c.slug) as [string, ...string[]]
 );
 
-// Original SVG illustration variants (see src/components/blog/hero-art/) —
-// no photographic stock images are used, so nothing here depends on
-// external image licensing.
-const heroArtVariant = z.enum(["waves", "skyline", "palms-sunset", "palms-day"]);
+// Real photos are hotlinked directly from Unsplash's CDN (not stored in this
+// repo) — each photo is confirmed "Free to use under the Unsplash License."
+// Attribution isn't required by that license but is included as good
+// practice and for EEAT/transparency purposes.
+const heroImage = z.object({
+  url: z.url(),
+  alt: z.string(),
+  credit: z.string().optional(),
+});
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
@@ -31,7 +36,7 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default("Florida Final Expense Insurance"),
     category: categorySlug,
-    heroArt: heroArtVariant.default("waves"),
+    heroImage,
     // Set true to keep a post out of the blog index and sitemap while it's
     // still being written/reviewed.
     draft: z.boolean().default(false),

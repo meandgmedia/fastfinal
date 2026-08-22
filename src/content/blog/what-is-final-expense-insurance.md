@@ -4,6 +4,10 @@ description: "A plain-language guide to what final expense insurance is, what it
 publishDate: 2026-01-15
 author: "Florida Final Expense Insurance"
 category: "guides"
+heroImage:
+  url: "https://images.unsplash.com/photo-1691464177778-f15d5864839d?auto=format&fit=crop&w=1600&q=75"
+  alt: "Palm trees on a Key West, Florida beach at sunset"
+  credit: "Albulena Panduri"
 tags: ["final expense insurance", "guide"]
 ---
 

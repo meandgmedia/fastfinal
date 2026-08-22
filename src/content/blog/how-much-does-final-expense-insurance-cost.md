@@ -5,9 +5,9 @@ publishDate: 2026-01-22
 author: "Florida Final Expense Insurance"
 category: "cost-pricing"
 heroImage:
-  url: "https://images.unsplash.com/photo-1691464177778-f15d5864839d?auto=format&fit=crop&w=1600&q=75"
-  alt: "Palm trees on a Florida beach at sunset"
-  credit: "Albulena Panduri (Unsplash)"
+  url: "https://images.pexels.com/photos/18760303/pexels-photo-18760303.jpeg?auto=compress&cs=tinysrgb&w=1600"
+  alt: "Cape Florida Lighthouse surrounded by beach grass at sunset"
+  credit: "Jan Tang (Pexels)"
 tags: ["final expense insurance", "cost", "pricing"]
 ---
 

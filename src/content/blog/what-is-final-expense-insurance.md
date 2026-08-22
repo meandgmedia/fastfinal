@@ -5,9 +5,9 @@ publishDate: 2026-01-15
 author: "Florida Final Expense Insurance"
 category: "guides"
 heroImage:
-  url: "https://images.unsplash.com/photo-1741023705528-2953cb652705?auto=format&fit=crop&w=1600&q=75"
-  alt: "City skyline by the water on a sunny Florida day"
-  credit: "Walter Martin (Unsplash)"
+  url: "https://images.pexels.com/photos/10720207/pexels-photo-10720207.jpeg?auto=compress&cs=tinysrgb&w=1600"
+  alt: "Tropical waterfront view with palm trees and calm water"
+  credit: "Am83 (Pexels)"
 tags: ["final expense insurance", "guide"]
 ---
 

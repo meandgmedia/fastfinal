@@ -8,7 +8,7 @@ interface Props {
   target?: "_blank" | "_self";
 }
 
-const { as = "div", href, padding = "md", class: className = "", target } = Astro.props;
+const { as = "div", href, padding = "md", class: className = "", target, ...rest } = Astro.props;
 const Tag = href ? "a" : as;
 ---
 
@@ -17,6 +17,7 @@ const Tag = href ? "a" : as;
   href={href}
   target={target}
   rel={target === "_blank" ? "noopener noreferrer" : undefined}
+  {...rest}
 >
   <slot />
 </Tag>

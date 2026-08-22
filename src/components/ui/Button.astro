@@ -4,7 +4,7 @@
 
 interface Props {
   href?: string;
-  variant?: "primary" | "secondary" | "ghost" | "dark" | "accent-outline";
+  variant?: "primary" | "secondary" | "ghost" | "dark" | "accent-outline" | "accent-solid";
   size?: "md" | "lg";
   type?: "button" | "submit" | "reset";
   class?: string;
@@ -136,5 +136,16 @@ const classes = ["btn", `btn--${variant}`, `btn--${size}`, className]
   .btn--accent-outline:hover {
     background: var(--color-accent-500);
     color: var(--color-accent-ink);
+  }
+
+  .btn--accent-solid {
+    background: var(--color-accent-700);
+    color: var(--color-paper-050);
+    border-color: var(--color-accent-700);
+  }
+
+  .btn--accent-solid:hover {
+    background: var(--color-accent-600);
+    border-color: var(--color-accent-600);
   }
 </style>

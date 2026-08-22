@@ -209,14 +209,14 @@ const schema = [
     color: var(--color-ink-900);
   }
 
-  .prose :global(a) {
+  .prose :global(a:not(.btn)) {
     color: var(--color-accent-700);
     text-decoration: underline;
     text-decoration-color: var(--color-accent-300);
     text-underline-offset: 2px;
   }
 
-  .prose :global(a:hover) {
+  .prose :global(a:not(.btn):hover) {
     color: var(--color-accent-600);
   }
 

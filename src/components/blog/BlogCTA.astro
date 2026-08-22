@@ -13,7 +13,7 @@ const { label = CTA_COPY.primary } = Astro.props;
   <Button href={CTA_COPY.quoteHref} variant="primary" size="lg" trackEvent="quote_cta_click">
     {label}
   </Button>
-  <p class="blog-cta__note text-on-dark-subtle">Coverage available for eligible Florida residents.</p>
+  <p class="blog-cta__note text-subtle">Coverage available for eligible Florida residents.</p>
 </div>
 
 <style>
@@ -23,9 +23,6 @@ const { label = CTA_COPY.primary } = Astro.props;
     align-items: center;
     gap: var(--space-3);
     margin-block: var(--space-8);
-    padding: var(--space-7);
-    background: var(--color-ink-900);
-    border-radius: var(--radius-lg);
     text-align: center;
   }
 

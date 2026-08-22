@@ -1,0 +1,35 @@
+---
+import Button from "../ui/Button.astro";
+import { CTA as CTA_COPY } from "../../data/site";
+
+interface Props {
+  label?: string;
+}
+
+const { label = CTA_COPY.primary } = Astro.props;
+---
+
+<div class="blog-cta" not-prose>
+  <Button href={CTA_COPY.quoteHref} variant="primary" size="lg" trackEvent="quote_cta_click">
+    {label}
+  </Button>
+  <p class="blog-cta__note text-subtle">No obligation. Coverage available for eligible Florida residents.</p>
+</div>
+
+<style>
+  .blog-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    margin-block: var(--space-8);
+    padding: var(--space-7);
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .blog-cta__note {
+    font-size: var(--text-xs);
+  }
+</style>

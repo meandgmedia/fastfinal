@@ -3,7 +3,9 @@ import BaseLayout from "./BaseLayout.astro";
 import Section from "../components/ui/Section.astro";
 import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import CTA from "../components/ui/CTA.astro";
+import HeroArt from "../components/blog/HeroArt.astro";
 import { SITE, CTA as CTA_COPY } from "../data/site";
+import { BLOG_CATEGORIES } from "../content.config";
 import { webPageSchema, breadcrumbSchema, articleSchema } from "../lib/schema";
 
 interface Props {
@@ -13,10 +15,13 @@ interface Props {
   publishDate: Date;
   updatedDate?: Date;
   author: string;
+  category: string;
+  heroArt: "waves" | "skyline" | "palms-sunset" | "palms-day";
 }
 
-const { title, description, slug, publishDate, updatedDate, author } = Astro.props;
+const { title, description, slug, publishDate, updatedDate, author, category, heroArt } = Astro.props;
 const path = `/blog/${slug}/`;
+const categoryLabel = BLOG_CATEGORIES.find((c) => c.slug === category)?.label ?? category;
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric" });
 
@@ -43,8 +48,15 @@ const schema = [
 
   <Section tone="paper">
     <article class="post">
+      <div class="post__hero-art">
+        <HeroArt variant={heroArt} />
+      </div>
+
       <header class="post__header">
-        <p class="eyebrow">{SITE.name} Blog</p>
+        <div class="post__eyebrow-row">
+          <p class="eyebrow">{SITE.name} Blog</p>
+          <span class="post__category">{categoryLabel}</span>
+        </div>
         <h1>{title}</h1>
         <div class="post__meta text-subtle">
           <span>{author}</span>
@@ -78,6 +90,30 @@ const schema = [
   .post {
     max-width: var(--container-narrow);
     margin-inline: auto;
+  }
+
+  .post__hero-art {
+    margin-bottom: var(--space-7);
+  }
+
+  .post__eyebrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .post__category {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-accent-700);
+    background: var(--color-accent-100);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-pill);
   }
 
   .post__header h1 {

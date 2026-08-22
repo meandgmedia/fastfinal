@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,6 +10,7 @@ export default defineConfig({
   trailingSlash: "always",
   compressHTML: true,
   integrations: [
+    mdx(),
     sitemap({
       // The 404 page and not-yet-published legal placeholder pages aren't
       // real, indexable content yet — keep them out of the sitemap.

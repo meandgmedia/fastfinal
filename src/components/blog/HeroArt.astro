@@ -1,0 +1,34 @@
+---
+import Waves from "./hero-art/Waves.astro";
+import Skyline from "./hero-art/Skyline.astro";
+import PalmsSunset from "./hero-art/PalmsSunset.astro";
+import PalmsDay from "./hero-art/PalmsDay.astro";
+
+interface Props {
+  variant: "waves" | "skyline" | "palms-sunset" | "palms-day";
+  class?: string;
+}
+
+const { variant, class: className = "" } = Astro.props;
+---
+
+<div class:list={["hero-art", className]}>
+  {variant === "waves" && <Waves />}
+  {variant === "skyline" && <Skyline />}
+  {variant === "palms-sunset" && <PalmsSunset />}
+  {variant === "palms-day" && <PalmsDay />}
+</div>
+
+<style>
+  .hero-art {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .hero-art :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

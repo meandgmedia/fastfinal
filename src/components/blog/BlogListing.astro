@@ -223,34 +223,68 @@ const schema = [
     max-width: var(--container-max);
   }
 
-  .post-list__art {
+  /*
+   * Search results are injected client-side via innerHTML, so they never
+   * receive Astro's per-build scoped-style attribute. Everything a
+   * .post-list__card needs to look correct — including what would
+   * otherwise come from Card.astro's own scoped .card/.card--pad-lg/
+   * .card--link rules — is duplicated here as :global() so it applies
+   * consistently whether the markup came from the server or from JS.
+   */
+  :global(.post-list__card) {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    padding: var(--space-7);
+    transition: border-color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  :global(.post-list__card:hover) {
+    border-color: var(--color-ink-600);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  :global(.post-list__art) {
     margin: calc(var(--space-7) * -1) calc(var(--space-7) * -1) var(--space-5);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     overflow: hidden;
   }
 
-  .post-list__art img {
+  :global(.post-list__art img) {
     display: block;
     width: 100%;
     height: 200px;
     object-fit: cover;
   }
 
-  .post-list__date {
+  :global(.post-list__date) {
     display: block;
     margin-bottom: var(--space-3);
+    font-family: var(--font-mono);
+    color: var(--color-text-subtle);
   }
 
-  .post-list__title {
+  :global(.post-list__title) {
     margin-bottom: var(--space-3);
     font-size: var(--text-lg);
   }
 
-  .post-list__link {
+  :global(.post-list__card p) {
+    color: var(--color-text-muted);
+  }
+
+  :global(.post-list__link) {
     display: inline-block;
     margin-top: var(--space-4);
     color: var(--color-accent-700);
     font-weight: 600;
+    text-decoration: none;
   }
 
   @media (max-width: 700px) {

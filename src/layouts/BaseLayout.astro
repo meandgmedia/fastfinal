@@ -59,6 +59,9 @@ const pageSchema = [organizationSchema(), websiteSchema(), ...(schema ? (Array.i
     <SEO title={title} description={description} path={path} type={type} noindex={noindex} schema={pageSchema} ogImage={ogImage} appendBrand={appendBrand} />
     <AnalyticsHead />
 
+    <!-- Impact / Ethos affiliate verification -->
+    <script is:inline type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7902391-0f14-4d5b-bdb3-c9a819a13ee11.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
+
     <slot name="head" />
   </head>
   <body>
